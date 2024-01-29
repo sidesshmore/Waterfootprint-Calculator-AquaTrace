@@ -1,13 +1,14 @@
-import 'package:aqua_trace/login.dart';
-import 'package:aqua_trace/register.dart';
+import 'package:aqua_trace/features/Login/ui/login.dart';
+import 'package:aqua_trace/features/Register/ui/register.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
     initialRoute: 'login',
     routes: {
-      'login': (context) => Login(),
-      'register': (context) => Register(),
+      'login': (context) => const Login(),
+      'register': (context) => const Register(),
     },
   ));
 }
