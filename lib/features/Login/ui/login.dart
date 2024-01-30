@@ -25,7 +25,7 @@ class _LoginState extends State<Login> {
       buildWhen: (previous, current) => current is! LoginActionState,
       listener: (context, state) {
         if (state is NavigateToDashboard) {
-          Navigator.pushNamed(context, 'success');
+          Navigator.pushNamed(context, 'aqua_trace');
         } 
         else if (state is NavigateToRegister) {
           Navigator.pushNamed(context, 'register');

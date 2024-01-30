@@ -24,11 +24,11 @@ void main() async{
       'register': (context) => const Register(),
       'success':(context)=>const Success(),
       'errors':(context)=>const ErrorScreen(),
-      'profile': (context) => ProfilePage(),
-      'blog': (context) => BlogPage(),
-      'aqua_trace': (context) => AquaTrace(),
-      'charts': (context) => ChartsPage(),
-      'share': (context) => Share(),
+      'profile': (context) => const ProfilePage(),
+      'blog': (context) => const BlogPage(),
+      'aqua_trace': (context) => const AquaTrace(),
+      'charts': (context) => const ChartsPage(),
+      'share': (context) => const Share(),
     },
   ));
 }
