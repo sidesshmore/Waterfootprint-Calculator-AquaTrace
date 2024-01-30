@@ -26,7 +26,7 @@ class _RegisterState extends State<Register> {
       buildWhen: (previous, current) => current is! RegisterActionState,
       listener: (context, state) {
         if (state is NavigateToDashboard) {
-          Navigator.pushNamed(context, 'success');
+          Navigator.pushNamed(context, 'aqua_trace');
         } else if (state is NavigateToErrorState) {
           Navigator.pushNamed(context, 'errors');
         } else if (state is NavigateToLogin) {

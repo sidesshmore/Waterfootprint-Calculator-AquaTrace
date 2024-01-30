@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:aqua_trace/bottom_navigation.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -20,7 +19,6 @@ class ProfilePage extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: const BottomNavigation(),
       body: ListView(
         padding: const EdgeInsets.all(12),
         children: [

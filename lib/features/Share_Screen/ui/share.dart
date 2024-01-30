@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:aqua_trace/bottom_navigation.dart';
 
-class ChartsPage extends StatelessWidget {
-  const ChartsPage({super.key});
+
+class Share extends StatelessWidget {
+  const Share({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,12 +10,11 @@ class ChartsPage extends StatelessWidget {
       body: Container(
         child: Center(
           child: Text(
-            'Charts',
+            'Share',
             style: TextStyle(fontSize: 50),
           ),
         ),
       ),
-      bottomNavigationBar: const BottomNavigation(),
     );
   }
 }

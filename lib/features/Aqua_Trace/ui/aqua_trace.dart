@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:aqua_trace/bottom_navigation.dart';
-
-class BlogPage extends StatelessWidget {
-  const BlogPage({super.key});
+class AquaTrace extends StatelessWidget {
+  const AquaTrace({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,12 +9,11 @@ class BlogPage extends StatelessWidget {
       body: Container(
         child: Center(
           child: Text(
-            'Blog',
+            'AquaTrace',
             style: TextStyle(fontSize: 50),
           ),
         ),
       ),
-      bottomNavigationBar: const BottomNavigation(),
     );
   }
 }
