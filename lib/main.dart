@@ -10,15 +10,15 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    initialRoute: 'login',
+    initialRoute: 'profile',
     routes: {
-      'login': (context) => Login(),
-      'register': (context) => Register(),
-      'profile': (context) => ProfilePage(),
-      'blog': (context) => BlogPage(),
-      'aqua_trace': (context) => AquaTrace(),
-      'charts': (context) => ChartsPage(),
-      'share': (context) => Share(),
+      'login': (context) => const Login(),
+      'register': (context) => const Register(),
+      'profile': (context) => const ProfilePage(),
+      'blog': (context) => const BlogPage(),
+      'aqua_trace': (context) => const AquaTrace(),
+      'charts': (context) => const ChartsPage(),
+      'share': (context) => const Share(),
     },
   ));
 }
