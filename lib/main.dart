@@ -18,7 +18,7 @@ void main() async{
   );
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    initialRoute: 'login',
+    initialRoute: 'profile',
     routes: {
       'login': (context) => const Login(),
       'register': (context) => const Register(),
