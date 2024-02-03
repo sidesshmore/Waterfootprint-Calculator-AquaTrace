@@ -1,4 +1,3 @@
-import 'package:aqua_trace/features/Aqua_Trace/ui/aqua_trace.dart';
 import 'package:aqua_trace/features/Blog/ui/blog.dart';
 import 'package:aqua_trace/features/Charts/ui/charts.dart';
 import 'package:aqua_trace/TestWidgets/error.dart';
@@ -12,21 +11,22 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:aqua_trace/features/Share_Screen/ui/share.dart';
 import 'package:flutter/material.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(MaterialApp(
+    theme: ThemeData(scaffoldBackgroundColor: Colors.white),
     debugShowCheckedModeBanner: false,
-    initialRoute: 'login',
+    initialRoute: 'aqua_trace',
     routes: {
       'login': (context) => const Login(),
       'register': (context) => const Register(),
-      'success':(context)=>const Success(),
-      'errors':(context)=>const ErrorScreen(),
+      'success': (context) => const Success(),
+      'errors': (context) => const ErrorScreen(),
       'profile': (context) => const ProfilePage(),
-      'blog': (context) => const BlogPage(),
+      'blog': (context) => BlogPage(),
       'aqua_trace': (context) => const CustomNavigationBar(),
       'charts': (context) => const ChartsPage(),
       'share': (context) => const Share(),

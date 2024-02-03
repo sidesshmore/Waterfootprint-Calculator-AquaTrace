@@ -120,7 +120,7 @@ class _RegisterState extends State<Register> {
                             width: 380,
                             child: TextField(
                               controller: _passwordcontroller,
-                              obscureText: false,
+                              obscureText: true,
                               decoration: InputDecoration(
                                   fillColor: Colors.grey.shade100,
                                   hintText: 'Password',

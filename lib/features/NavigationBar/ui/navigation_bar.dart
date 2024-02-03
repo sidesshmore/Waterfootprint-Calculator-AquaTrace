@@ -10,15 +10,13 @@ class CustomNavigationBar extends StatefulWidget {
   const CustomNavigationBar({super.key});
 
   @override
-  State<CustomNavigationBar> createState() =>
-      _CustomNavigationBarState();
+  State<CustomNavigationBar> createState() => _CustomNavigationBarState();
 }
 
-class _CustomNavigationBarState
-    extends State<CustomNavigationBar> {
+class _CustomNavigationBarState extends State<CustomNavigationBar> {
   int _selectedIndex = 2;
 
-  static const List<Widget> _widgetOptions = <Widget>[
+  List<Widget> _widgetOptions = <Widget>[
     Share(),
     ChartsPage(),
     AquaTrace(),
@@ -36,26 +34,26 @@ class _CustomNavigationBarState
   Widget build(BuildContext context) {
     return Scaffold(
       // appBar: AppBar(
-        
+
       // ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        type:BottomNavigationBarType.fixed,
+        type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-                CupertinoIcons.share,
-                size: 25,
-              ),
+              CupertinoIcons.share,
+              size: 25,
+            ),
             label: '',
           ),
           BottomNavigationBarItem(
             icon: Icon(
-                CupertinoIcons.chart_bar_alt_fill,
-                size: 25,
-              ),
+              CupertinoIcons.chart_bar_alt_fill,
+              size: 25,
+            ),
             label: '',
           ),
           BottomNavigationBarItem(
@@ -63,28 +61,25 @@ class _CustomNavigationBarState
               backgroundColor: Color.fromARGB(255, 24, 94, 247),
               radius: 25,
               child: Icon(
-                  CupertinoIcons.drop_fill,
-                  color: Colors.white,
-                  size: 33,
-                ),
-             
+                CupertinoIcons.drop_fill,
+                color: Colors.white,
+                size: 33,
+              ),
             ),
             label: '',
-         
           ),
           BottomNavigationBarItem(
             icon: Icon(
-                CupertinoIcons.book_fill,
-                size: 25,
-              ),
+              CupertinoIcons.book_fill,
+              size: 25,
+            ),
             label: '',
           ),
-
           BottomNavigationBarItem(
             icon: Icon(
-                CupertinoIcons.person,
-                size: 25,
-              ),
+              CupertinoIcons.person,
+              size: 25,
+            ),
             label: '',
           ),
         ],
