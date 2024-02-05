@@ -1,11 +1,18 @@
+import 'package:aqua_trace/features/Aqua_Trace/widgets/chart.dart';
+import 'package:aqua_trace/features/Aqua_Trace/widgets/topBar.dart';
 import 'package:flutter/material.dart';
 
-class AquaTrace extends StatelessWidget {
+class AquaTrace extends StatefulWidget {
   const AquaTrace({super.key});
 
   @override
+  State<AquaTrace> createState() => _AquaTraceState();
+}
+
+class _AquaTraceState extends State<AquaTrace> {
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
       // appBar: AppBar(
       //   title: const Text(
       //     'WATER FOOTPRINT',
@@ -25,13 +32,15 @@ class AquaTrace extends StatelessWidget {
       //   toolbarHeight: 75,
       // ),
       body: Container(
-        child: const Center(
-          child: Text(
-            'AquaTrace',
-            style: TextStyle(fontSize: 50),
-          ),
-        ),
+        child: const Column(
+          children: [
+            SizedBox(height: 60,),
+            TopBar(),
+            SizedBox(height:60),
+            chartWidget()
+          ],
+        )
       ),
-    );
+    );;
   }
 }
