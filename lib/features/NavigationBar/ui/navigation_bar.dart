@@ -17,7 +17,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
   int _selectedIndex = 2;
 
   List<Widget> _widgetOptions = <Widget>[
-    Share(),
+    ShareScreen(),
     ChartsPage(),
     AquaTrace(),
     BlogPage(),

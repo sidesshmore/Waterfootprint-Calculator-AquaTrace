@@ -29,7 +29,7 @@ void main() async {
       'blog': (context) => BlogPage(),
       'aqua_trace': (context) => const CustomNavigationBar(),
       'charts': (context) => const ChartsPage(),
-      'share': (context) => const Share(),
+      'share': (context) => ShareScreen(),
     },
   ));
 }
