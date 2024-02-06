@@ -1,5 +1,6 @@
 import 'package:aqua_trace/features/Aqua_Trace/widgets/chart.dart';
 import 'package:aqua_trace/features/Aqua_Trace/widgets/topBar.dart';
+import 'package:aqua_trace/features/Aqua_Trace/widgets/trackedList.dart';
 import 'package:flutter/material.dart';
 
 class AquaTrace extends StatefulWidget {
@@ -32,12 +33,18 @@ class _AquaTraceState extends State<AquaTrace> {
       //   toolbarHeight: 75,
       // ),
       body: Container(
-        child: const Column(
+        child:  Column(
           children: [
             SizedBox(height: 60,),
             TopBar(),
             SizedBox(height:60),
-            chartWidget()
+            chartWidget(),
+            SizedBox(height:30),
+            Container(
+              margin: EdgeInsets.only(right:260),
+              child: Text('Tracked List'),
+            ),
+            Expanded(child: TrackedList())
           ],
         )
       ),

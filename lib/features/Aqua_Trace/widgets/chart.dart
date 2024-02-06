@@ -15,7 +15,7 @@ class _chartWidgetState extends State<chartWidget> {
       animation: true,
       animationDuration: 800,
       radius: 140,
-      lineWidth: 30,
+      lineWidth: 35,
       percent: 0.65,
       progressColor: Colors.blue.shade700,
       backgroundColor: Colors.blue.shade100,
