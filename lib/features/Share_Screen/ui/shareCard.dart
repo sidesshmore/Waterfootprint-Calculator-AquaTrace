@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:aqua_trace/ad_mobile_service.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:screenshot/screenshot.dart';
@@ -19,7 +20,6 @@ class ShareCard extends StatefulWidget {
 }
 
 class _ShareCardState extends State<ShareCard> {
-  InterstitialAd? _interstitialAd;
   final _screenshotController = ScreenshotController();
 
   Future<void> _takeScreenshot() {
@@ -42,6 +42,29 @@ class _ShareCardState extends State<ShareCard> {
         print(onError);
       });
     });
+  }
+
+  void initState() {
+    super.initState();
+    initInterstitialAd();
+  }
+
+  late InterstitialAd interstitialAd;
+  bool isAdLoaded = false;
+  var adUnit = 'ca-app-pub-3940256099942544/1033173712';
+
+  initInterstitialAd() {
+    InterstitialAd.load(
+        adUnitId: adUnit,
+        request: const AdRequest(),
+        adLoadCallback: InterstitialAdLoadCallback(onAdLoaded: (ad) {
+          interstitialAd = ad;
+          setState(() {
+            isAdLoaded = true;
+          });
+        }, onAdFailedToLoad: (error) {
+          interstitialAd.dispose();
+        }));
   }
 
   GlobalKey previewContainer = new GlobalKey();
@@ -141,7 +164,11 @@ class _ShareCardState extends State<ShareCard> {
                   padding: const EdgeInsets.only(
                       left: 16.0, bottom: 16.0, right: 16),
                   child: ElevatedButton.icon(
-                    onPressed: () {},
+                    onPressed: () {
+                      if (isAdLoaded) {
+                        interstitialAd.show();
+                      }
+                    },
                     icon: const Icon(Icons.ads_click),
                     label: const Text('Ads Button'),
                     style: ElevatedButton.styleFrom(
