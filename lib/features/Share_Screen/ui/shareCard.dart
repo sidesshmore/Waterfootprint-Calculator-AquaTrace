@@ -1,7 +1,5 @@
 import 'dart:io';
-import 'dart:typed_data';
 
-import 'package:aqua_trace/ad_mobile_service.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:screenshot/screenshot.dart';
@@ -33,7 +31,7 @@ class _ShareCardState extends State<ShareCard> {
       ByteData? byteData =
           await image.toByteData(format: ui.ImageByteFormat.png);
       Uint8List pngBytes = byteData!.buffer.asUint8List();
-      File imgFile = new File('$directory/screenshot.png');
+      File imgFile = File('$directory/screenshot.png');
       imagePaths.add(imgFile.path);
       imgFile.writeAsBytes(pngBytes).then((value) async {
         await Share.shareFiles(imagePaths,
@@ -44,6 +42,7 @@ class _ShareCardState extends State<ShareCard> {
     });
   }
 
+  @override
   void initState() {
     super.initState();
     initInterstitialAd();
@@ -67,7 +66,7 @@ class _ShareCardState extends State<ShareCard> {
         }));
   }
 
-  GlobalKey previewContainer = new GlobalKey();
+  GlobalKey previewContainer = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -111,7 +110,7 @@ class _ShareCardState extends State<ShareCard> {
                   ),
                 ),
                 const Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: EdgeInsets.all(16.0),
                   child: Text(
                     "Congrats you're better than",
                     style: TextStyle(
@@ -122,7 +121,7 @@ class _ShareCardState extends State<ShareCard> {
                   ),
                 ),
                 const Padding(
-                  padding: const EdgeInsets.all(10.0),
+                  padding: EdgeInsets.all(10.0),
                   child: Text(
                     "60%",
                     style: TextStyle(
@@ -133,7 +132,7 @@ class _ShareCardState extends State<ShareCard> {
                   ),
                 ),
                 const Padding(
-                  padding: const EdgeInsets.only(top: 5.0, bottom: 15),
+                  padding: EdgeInsets.only(top: 5.0, bottom: 15),
                   child: Text(
                     "of the users 😁❤️\nKeep Going!!!!",
                     style: TextStyle(
@@ -176,7 +175,7 @@ class _ShareCardState extends State<ShareCard> {
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       padding: const EdgeInsets.symmetric(vertical: 12.0),
-                      backgroundColor: Color.fromARGB(255, 0, 140, 37),
+                      backgroundColor: const Color.fromARGB(255, 0, 140, 37),
                       foregroundColor: Colors.white,
                     ),
                   ),

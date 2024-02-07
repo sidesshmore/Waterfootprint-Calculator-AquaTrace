@@ -16,12 +16,12 @@ class CustomNavigationBar extends StatefulWidget {
 class _CustomNavigationBarState extends State<CustomNavigationBar> {
   int _selectedIndex = 2;
 
-  List<Widget> _widgetOptions = <Widget>[
+  final List<Widget> _widgetOptions = <Widget>[
     ShareScreen(),
-    ChartsPage(),
-    AquaTrace(),
-    BlogPage(),
-    ProfilePage()
+    const ChartsPage(),
+    const AquaTrace(),
+    const BlogPage(),
+    const ProfilePage()
   ];
 
   void _onItemTapped(int index) {

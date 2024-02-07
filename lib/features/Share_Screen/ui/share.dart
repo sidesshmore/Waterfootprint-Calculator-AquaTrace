@@ -3,7 +3,7 @@ import 'package:screenshot/screenshot.dart';
 import 'package:aqua_trace/features/Share_Screen/ui/shareCard.dart';
 
 class ShareScreen extends StatelessWidget {
-  ShareScreen({Key? key});
+  ShareScreen({super.key});
 
   final _screenshotController = ScreenshotController();
 

@@ -28,7 +28,7 @@ class _TrackedListCardState extends State<TrackedListCard> {
                 SizedBox(width: 5),
                 Icon(
                   CupertinoIcons.circle_fill,
-                  color: const Color.fromARGB(255, 24, 94, 247),
+                  color: Color.fromARGB(255, 24, 94, 247),
                   size: 15,
                 ),
                 SizedBox(width: 8),
