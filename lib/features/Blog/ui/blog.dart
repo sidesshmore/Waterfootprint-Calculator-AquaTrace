@@ -2,7 +2,7 @@ import 'package:aqua_trace/features/Blog/ui/blog_card.dart';
 import 'package:flutter/material.dart';
 
 class BlogPage extends StatelessWidget {
-  BlogPage({super.key});
+  const BlogPage({super.key});
 
   @override
   Widget build(BuildContext context) {

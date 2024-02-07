@@ -5,8 +5,8 @@ class BlogContentPage extends StatelessWidget {
   final String postContent;
   final String imageUrl;
 
-  BlogContentPage(
-      {required this.postTitle,
+  const BlogContentPage(
+      {super.key, required this.postTitle,
       required this.postContent,
       required this.imageUrl});
 
@@ -22,12 +22,12 @@ class BlogContentPage extends StatelessWidget {
           child: Column(
             children: [
               Image(image: NetworkImage(imageUrl)),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Text(
                 postContent,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 18,
                 ),
               ),

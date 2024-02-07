@@ -15,7 +15,7 @@ class ProfilePage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(Icons.settings_rounded),
+            icon: const Icon(Icons.settings_rounded),
           ),
         ],
       ),

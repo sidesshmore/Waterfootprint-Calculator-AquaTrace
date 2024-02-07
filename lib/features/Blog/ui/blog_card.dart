@@ -6,8 +6,8 @@ class BlogCard extends StatelessWidget {
   final String postContent;
   final String imageUrl;
 
-  BlogCard(
-      {required this.postTitle,
+  const BlogCard(
+      {super.key, required this.postTitle,
       required this.postContent,
       required this.imageUrl});
 
@@ -74,7 +74,7 @@ class BlogCard extends StatelessWidget {
                       Expanded(
                         child: Text(
                           postContent,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 15,
                           ),
                           softWrap: true,

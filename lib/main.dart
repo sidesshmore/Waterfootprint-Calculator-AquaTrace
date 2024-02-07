@@ -26,7 +26,7 @@ void main() async {
       'success': (context) => const Success(),
       'errors': (context) => const ErrorScreen(),
       'profile': (context) => const ProfilePage(),
-      'blog': (context) => BlogPage(),
+      'blog': (context) => const BlogPage(),
       'aqua_trace': (context) => const CustomNavigationBar(),
       'charts': (context) => const ChartsPage(),
       'share': (context) => const Share(),

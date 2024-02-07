@@ -35,19 +35,19 @@ class _AquaTraceState extends State<AquaTrace> {
       body: Container(
         child:  Column(
           children: [
-            SizedBox(height: 60,),
-            TopBar(),
-            SizedBox(height:60),
-            chartWidget(),
-            SizedBox(height:30),
+            const SizedBox(height: 60,),
+            const TopBar(),
+            const SizedBox(height:60),
+            const chartWidget(),
+            const SizedBox(height:30),
             Container(
-              margin: EdgeInsets.only(right:260),
-              child: Text('Tracked List'),
+              margin: const EdgeInsets.only(right:260),
+              child: const Text('Tracked List'),
             ),
-            Expanded(child: TrackedList())
+            const Expanded(child: TrackedList())
           ],
         )
       ),
-    );;
+    );
   }
 }

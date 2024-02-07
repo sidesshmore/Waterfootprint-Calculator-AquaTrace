@@ -13,7 +13,7 @@ class _TrackedListState extends State<TrackedList> {
   Widget build(BuildContext context) {
     return ListView(
       padding: const EdgeInsets.only(top:0),
-      children: List.generate(10, (index) => TrackedListCard(),)
+      children: List.generate(10, (index) => const TrackedListCard(),)
         
       ,
     );

@@ -8,7 +8,7 @@ class Share extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        child: Center(
+        child: const Center(
           child: Text(
             'Share',
             style: TextStyle(fontSize: 50),
