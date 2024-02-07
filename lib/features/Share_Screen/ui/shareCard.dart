@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -18,12 +19,13 @@ class ShareCard extends StatefulWidget {
 }
 
 class _ShareCardState extends State<ShareCard> {
+  InterstitialAd? _interstitialAd;
   final _screenshotController = ScreenshotController();
 
   Future<void> _takeScreenshot() {
     List<String> imagePaths = [];
     final RenderBox box = context.findRenderObject() as RenderBox;
-    return new Future.delayed(const Duration(milliseconds: 500), () async {
+    return Future.delayed(const Duration(milliseconds: 500), () async {
       RenderRepaintBoundary? boundary = previewContainer.currentContext!
           .findRenderObject() as RenderRepaintBoundary?;
       ui.Image image = await boundary!.toImage();
@@ -131,6 +133,23 @@ class _ShareCardState extends State<ShareCard> {
                       ),
                       padding: const EdgeInsets.symmetric(vertical: 12.0),
                       backgroundColor: const Color.fromARGB(255, 24, 94, 247),
+                      foregroundColor: Colors.white,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      left: 16.0, bottom: 16.0, right: 16),
+                  child: ElevatedButton.icon(
+                    onPressed: () {},
+                    icon: const Icon(Icons.ads_click),
+                    label: const Text('Ads Button'),
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 12.0),
+                      backgroundColor: Color.fromARGB(255, 0, 140, 37),
                       foregroundColor: Colors.white,
                     ),
                   ),
