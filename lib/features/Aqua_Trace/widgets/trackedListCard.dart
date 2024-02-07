@@ -13,7 +13,7 @@ class _TrackedListCardState extends State<TrackedListCard> {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 4),
-      child:  Card(
+      child: Card(
         elevation: 2,
         shape: const BeveledRectangleBorder(),
         clipBehavior: Clip.hardEdge,
@@ -27,8 +27,9 @@ class _TrackedListCardState extends State<TrackedListCard> {
               children: [
                 SizedBox(width: 5),
                 Icon(
-                  CupertinoIcons.stop_fill,
-                  color: Colors.blue,
+                  CupertinoIcons.circle_fill,
+                  color: const Color.fromARGB(255, 24, 94, 247),
+                  size: 15,
                 ),
                 SizedBox(width: 8),
                 Expanded(

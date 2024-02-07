@@ -22,12 +22,17 @@ class _chartWidgetState extends State<chartWidget> {
       circularStrokeCap: CircularStrokeCap.round,
       center: const Column(
         children: [
-           SizedBox(height:60),
-           Icon(Icons.water_drop,color:  Color.fromRGBO(52,104,192,1),size: 70),
-           SizedBox(height:10),
-          Text('1356 Litres',style: TextStyle(fontSize: 28,fontWeight: FontWeight.w500)),
+          SizedBox(height: 60),
+          Icon(Icons.water_drop,
+              color: Color.fromARGB(255, 24, 94, 247), size: 70),
+          SizedBox(height: 10),
+          Text('1356 Litres',
+              style: TextStyle(fontSize: 28, fontWeight: FontWeight.w500)),
           // const SizedBox(height:2),
-          Text('water used',style: TextStyle(fontSize: 16),)
+          Text(
+            'water used',
+            style: TextStyle(fontSize: 16),
+          )
         ],
       ),
     );
