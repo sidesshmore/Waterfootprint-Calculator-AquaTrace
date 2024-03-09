@@ -1,3 +1,4 @@
+import 'package:aqua_trace/models/servingCategory.dart';
 import 'package:flutter/material.dart';
 
 class FoodModal extends StatefulWidget {
@@ -8,12 +9,9 @@ class FoodModal extends StatefulWidget {
 }
 
 class _FoodModalState extends State<FoodModal> {
+  Category _selectedCategory = Category.grams;
 
-  final unit=['QTY','Grams'];
-
-   String _selectedUnit='QTY';
-
-@override
+  @override
   Widget build(BuildContext context) {
     return Container(
       child: Padding(
@@ -21,36 +19,58 @@ class _FoodModalState extends State<FoodModal> {
         child: Column(
           children: [
             const TextField(
-              decoration:  InputDecoration(label: Text('Item Name')),
+              decoration: InputDecoration(label: Text('Item Name')),
             ),
             const Row(
               children: [
-                Expanded(
+                 Expanded(
                   child: TextField(
                     keyboardType: TextInputType.numberWithOptions(),
-                    decoration:  InputDecoration(
-                      label: Text('Quantity')
-                    ),
+                    decoration: InputDecoration(label: Text('Quantity')),
                   ),
                 ),
-                const SizedBox(width: 16),
                 
-                Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    
-                  ),
-                )
+               
               ],
             ),
             const SizedBox(
               height: 38,
             ),
             Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const SizedBox(width: 10,),
+                 Expanded(
+                  child: 
+                       Container(
+                          height: 48,
+                          child: DropdownButton(
+                            style: const TextStyle(fontSize: 18,color: Colors.black),
+                              value: _selectedCategory,
+                              items: Category.values
+                                  .map(
+                                    (category) => DropdownMenuItem(
+                                      value: category,
+                                      child: Text(
+                                        category.name.toUpperCase(),
+                                      ),
+                                    ),
+                                  )
+                                  .toList(),
+                              onChanged: (value) {
+                                if (value == null) {
+                                  return;
+                                }
+                                setState(() {
+                                  _selectedCategory = value;
+                                });
+                              }),
+                        
+                      ),
+                    
+                  
+                ),
                 const Spacer(),
-                
                 ElevatedButton(
                   onPressed: () {},
                   child: const Text('Save'),
@@ -66,5 +86,6 @@ class _FoodModalState extends State<FoodModal> {
           ],
         ),
       ),
-    );  }
+    );
+  }
 }

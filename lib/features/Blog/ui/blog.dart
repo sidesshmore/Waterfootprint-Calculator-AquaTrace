@@ -1,4 +1,5 @@
 import 'package:aqua_trace/features/Blog/ui/blog_card.dart';
+import 'package:aqua_trace/models/blogTextContent.dart';
 import 'package:flutter/material.dart';
 
 class BlogPage extends StatelessWidget {
@@ -22,17 +23,6 @@ class BlogPage extends StatelessWidget {
   }
 }
 
-class BlogTextContent {
-  final String postTitle;
-  final String postContent;
-  final String imageUrl;
-
-  BlogTextContent({
-    required this.postTitle,
-    required this.postContent,
-    required this.imageUrl,
-  });
-}
 
 final List<BlogTextContent> blogPosts = [
   BlogTextContent(

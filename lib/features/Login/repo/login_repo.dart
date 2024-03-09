@@ -7,6 +7,7 @@ class LoginRepo{
     final FirebaseAuth auth=FirebaseAuth.instance;
     try {
       UserCredential credential =await auth.signInWithEmailAndPassword(email: email, password: password);
+      print(credential);
       return credential.user;
     } catch (e) {
       log(e.toString());

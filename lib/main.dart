@@ -21,7 +21,7 @@ void main() async {
   runApp(MaterialApp(
     theme: ThemeData(scaffoldBackgroundColor: Colors.white),
     debugShowCheckedModeBanner: false,
-    initialRoute: 'aqua_trace',
+    initialRoute: 'login',
     routes: {
       'login': (context) => const Login(),
       'register': (context) => const Register(),
