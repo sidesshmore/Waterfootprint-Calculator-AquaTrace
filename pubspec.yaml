@@ -41,6 +41,9 @@ dependencies:
   screenshot: ^2.1.0
   share_plus: ^7.2.2
   google_mobile_ads: ^4.0.0
+  shared_preferences: ^2.2.2
+  dio: ^5.4.0
+  http: ^1.2.1
 
 
 dev_dependencies:

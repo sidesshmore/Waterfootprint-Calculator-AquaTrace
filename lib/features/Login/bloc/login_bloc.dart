@@ -4,6 +4,7 @@ import 'package:aqua_trace/features/Login/repo/login_repo.dart';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meta/meta.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';
@@ -18,9 +19,12 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   FutureOr<void> signUpButtonClicked(SignUpButtonClicked event, Emitter<LoginState> emit) async{
     User? user=await LoginRepo.login(event.email, event.password);
+    // Instance of Local Storage 
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
     if(user==null){
       emit(NavigateToErrorState());
     }else{
+      await prefs.setString('uid',user.uid);
       emit(NavigateToDashboard());
     }
   }
