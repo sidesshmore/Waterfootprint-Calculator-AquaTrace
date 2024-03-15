@@ -1,10 +1,13 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:aqua_trace/features/Food_Modal/bloc/addfood_bloc.dart';
 import 'package:aqua_trace/models/addItem.dart';
 import 'package:aqua_trace/models/servingCategory.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class FoodModal extends StatefulWidget {
   const FoodModal({super.key});
@@ -89,12 +92,24 @@ class _FoodModalState extends State<FoodModal> {
                     ),
                     const Spacer(),
                     ElevatedButton(
-                      onPressed: () {
+                      onPressed: ()async{
+                        final SharedPreferences prefs = await SharedPreferences.getInstance();
                         print('button clicked');
                         AddFood item=AddFood(itemName: _itemController.text, quantity: double.parse(_quantityController.text), category: _selectedCategory);
-                        addfoodbloc.add(AddFoodItemButtonClicked(item: item));
-                        Navigator.pop(context);
+                        final category=item.category.toString().substring(9);
+                        final dio = Dio();
+                          final response = await dio
+                            .post('https://long-pink-swallow-belt.cyclic.app/add', data: {
+                            "uid": prefs.getString('uid'),
+                            "item": item.itemName,
+                            "waterfootprint": "80",
+                            "measure": category,
+                            "quantity": item.quantity
+      });
 
+                          if(response.statusCode==200){
+                              Navigator.pushNamedAndRemoveUntil(context, 'aqua_trace', (route) => false);
+                           }
                       },
                       child: const Text('Save'),
                     ),

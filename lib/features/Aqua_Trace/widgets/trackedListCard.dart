@@ -1,15 +1,14 @@
+import 'package:aqua_trace/models/list.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class TrackedListCard extends StatefulWidget {
-  const TrackedListCard({super.key});
+class TrackedListCard extends StatelessWidget {
+  const TrackedListCard({required this.item,super.key});
 
-  @override
-  State<TrackedListCard> createState() => _TrackedListCardState();
-}
+  final IncomingList item;
 
-class _TrackedListCardState extends State<TrackedListCard> {
-  @override
+    @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 4),
@@ -23,10 +22,10 @@ class _TrackedListCardState extends State<TrackedListCard> {
           height: 50,
           child: Container(
             margin: const EdgeInsets.only(right: 7),
-            child: const Row(
+            child:  Row(
               children: [
-                SizedBox(width: 5),
-                Icon(
+                const SizedBox(width: 5),
+                const Icon(
                   CupertinoIcons.circle_fill,
                   color: Color.fromARGB(255, 24, 94, 247),
                   size: 15,
@@ -34,7 +33,7 @@ class _TrackedListCardState extends State<TrackedListCard> {
                 SizedBox(width: 8),
                 Expanded(
                   child: Text(
-                    'Apple',
+                    item.item,
                     softWrap: false,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
@@ -43,10 +42,12 @@ class _TrackedListCardState extends State<TrackedListCard> {
                     ),
                   ),
                 ),
-                Spacer(),
-                Text('2 qty'),
-                Spacer(),
-                Text('5 litres'),
+                SizedBox(width: 14),
+                Text(item.quantity),
+                SizedBox(width: 5,),
+                Text(item.measure),
+                SizedBox(width: 70),
+                Text(item.waterfootprint),
                 Spacer(),
                 Text('25%')
               ],

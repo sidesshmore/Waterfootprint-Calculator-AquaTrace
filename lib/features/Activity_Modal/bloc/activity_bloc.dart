@@ -13,10 +13,13 @@ class ActivityBloc extends Bloc<ActivityEvent, ActivityState> {
     on<AddActivityItemButtonClicked>(addActivityItemButtonClicked);
   }
 
-  FutureOr<void> addActivityItemButtonClicked(AddActivityItemButtonClicked event, Emitter<ActivityState> emit) {
+  FutureOr<void> addActivityItemButtonClicked(AddActivityItemButtonClicked event, Emitter<ActivityState> emit)async{
     print('add food item clicked');
-    ActivityRepo.addActivity(event.item);
+    bool success=await ActivityRepo.addActivity(event.item);
     print(event.item.activityName);
     print(event.item.time);
+    if(success){
+      emit(ActivityAdded());
+    }
   }
 }

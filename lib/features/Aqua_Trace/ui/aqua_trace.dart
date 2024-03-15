@@ -1,6 +1,8 @@
+import 'package:aqua_trace/features/Aqua_Trace/repos/getItems.dart';
 import 'package:aqua_trace/features/Aqua_Trace/widgets/chart.dart';
 import 'package:aqua_trace/features/Aqua_Trace/widgets/topBar.dart';
 import 'package:aqua_trace/features/Aqua_Trace/widgets/trackedList.dart';
+import 'package:aqua_trace/models/list.dart';
 import 'package:flutter/material.dart';
 
 class AquaTrace extends StatefulWidget {
@@ -11,6 +13,31 @@ class AquaTrace extends StatefulWidget {
 }
 
 class _AquaTraceState extends State<AquaTrace> {
+
+   double total=0;
+
+    List<IncomingList> inList=[];
+
+  
+  void getTotal()async{
+
+
+    
+
+    List<IncomingList> inLists=await getItemsRepo.getList();
+    double p_total=await getItemsRepo.getTotal();
+    setState(() {
+      inList=inLists;
+      total=p_total;
+    });
+  }
+
+  @override
+  void initState(){
+    getTotal();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -38,13 +65,13 @@ class _AquaTraceState extends State<AquaTrace> {
             const SizedBox(height: 60,),
             const TopBar(),
             const SizedBox(height:60),
-            const chartWidget(),
+             chartWidget(total: total,),
             const SizedBox(height:30),
             Container(
               margin: const EdgeInsets.only(right:260),
               child: const Text('Tracked List'),
             ),
-            const Expanded(child: TrackedList())
+             Expanded(child: TrackedList(inList: inList,))
           ],
         )
       ),

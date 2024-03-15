@@ -17,10 +17,9 @@ class ActivityRepo {
         "measure": 'mins',
         "quantity": items.time
       });
-      if(response.statusCode==200){
+      if (response.statusCode == 200) {
         return true;
-      }
-      else{
+      } else {
         return false;
       }
     } catch (e) {
