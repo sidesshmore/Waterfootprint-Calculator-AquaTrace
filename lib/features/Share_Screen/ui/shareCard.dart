@@ -23,7 +23,7 @@ class ShareCard extends StatefulWidget {
 
 class _ShareCardState extends State<ShareCard> {
   final _screenshotController = ScreenshotController();
-   int footprint=0;
+   double footprint=0;
 
   Future<void> _takeScreenshot() {
     List<String> imagePaths = [];
@@ -53,9 +53,10 @@ class _ShareCardState extends State<ShareCard> {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
   final uid=prefs.getString('uid');
   final response=await dio.get('https://long-pink-swallow-belt.cyclic.app/user/today/${uid}');
+  print(response.data);
   if (response.statusCode == 200) {
   setState(() {
-    footprint=(int.parse(response.data["total"]));
+    footprint=(double.parse(response.data["total"]));
   });
   }
  } 
@@ -119,7 +120,7 @@ class _ShareCardState extends State<ShareCard> {
                       color: Colors.white,
                     ),
                     title: Text(
-                      '$footprint litres of water',
+                      '${footprint.toInt()} litres of water',
                       style:const TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.w600,

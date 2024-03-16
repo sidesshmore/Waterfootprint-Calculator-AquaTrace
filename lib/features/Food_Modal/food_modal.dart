@@ -155,7 +155,6 @@ class _FoodModalState extends State<FoodModal> {
                                 data: {
                                   "uid": prefs.getString('uid'),
                                   "item": item.itemName,
-                                  "waterfootprint": "80",
                                   "measure": category,
                                   "quantity": item.quantity
                                 });

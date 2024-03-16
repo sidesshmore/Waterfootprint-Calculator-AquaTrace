@@ -131,7 +131,6 @@ class _ActivityModalState extends State<ActivityModal> {
                                 data: {
                                   "uid": prefs.getString('uid'),
                                   "item": item.activityName,
-                                  "waterfootprint": "80",
                                   "measure": 'mins',
                                   "quantity": item.time
                                 });

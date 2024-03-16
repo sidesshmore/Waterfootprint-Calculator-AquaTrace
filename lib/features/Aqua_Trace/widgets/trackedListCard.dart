@@ -46,7 +46,7 @@ class TrackedListCard extends StatelessWidget {
                 Text(item.quantity),
                 SizedBox(width: 5,),
                 Text(item.measure),
-                SizedBox(width: 70),
+                Spacer(),
                 Text(item.waterfootprint),
                 Spacer(),
                 Text('25%')
