@@ -105,7 +105,7 @@ class _ShareCardState extends State<ShareCard> {
                             fontSize: width * 0.045, color: Colors.black),
                         children: <TextSpan>[
                           TextSpan(
-                              text: '${footprint.toInt()} Litres',
+                              text: ' ${footprint.toInt()} Litres',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: width * 0.045)),

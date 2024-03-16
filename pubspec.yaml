@@ -45,6 +45,7 @@ dependencies:
   http: ^1.2.1
   dash_chat_2: ^0.0.20
   flutter_swiper_view: ^1.1.8
+  confetti: ^0.7.0
 
 
 dev_dependencies:
