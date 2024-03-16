@@ -48,8 +48,8 @@ class _ShareScreenState extends State<ShareScreen> {
             child: ConfettiWidget(
               confettiController: _controllerTopCenter,
               blastDirection: 90,
-              maxBlastForce: 5,
-              minBlastForce: 4,
+              maxBlastForce: 4,
+              minBlastForce: 3,
               emissionFrequency: 0.05,
               numberOfParticles: 23,
               gravity: 0.2,
