@@ -1,10 +1,7 @@
 import 'dart:ffi';
 import 'dart:io';
-
-import 'package:aqua_trace/features/Aqua_Trace/repos/getItems.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -23,7 +20,7 @@ class ShareCard extends StatefulWidget {
 
 class _ShareCardState extends State<ShareCard> {
   final _screenshotController = ScreenshotController();
-   double footprint=0;
+  double footprint = 0;
 
   Future<void> _takeScreenshot() {
     List<String> imagePaths = [];
@@ -47,160 +44,107 @@ class _ShareCardState extends State<ShareCard> {
     });
   }
 
-
-  Future<void> getTotal()async{
-  final dio=Dio();
-  final SharedPreferences prefs = await SharedPreferences.getInstance();
-  final uid=prefs.getString('uid');
-  final response=await dio.get('https://long-pink-swallow-belt.cyclic.app/user/today/${uid}');
-  print(response.data);
-  if (response.statusCode == 200) {
-  setState(() {
-    footprint=(double.parse(response.data["total"]));
-  });
+  Future<void> getTotal() async {
+    final dio = Dio();
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final uid = prefs.getString('uid');
+    final response = await dio
+        .get('https://long-pink-swallow-belt.cyclic.app/user/today/${uid}');
+    print(response.data);
+    if (response.statusCode == 200) {
+      setState(() {
+        footprint = (double.parse(response.data["total"]));
+      });
+    }
   }
- } 
 
   @override
   void initState() {
     super.initState();
     getTotal();
-    initInterstitialAd();
-  }
-
-  late InterstitialAd interstitialAd;
-  bool isAdLoaded = false;
-  var adUnit = 'ca-app-pub-3940256099942544/1033173712';
-
-  initInterstitialAd() {
-    InterstitialAd.load(
-        adUnitId: adUnit,
-        request: const AdRequest(),
-        adLoadCallback: InterstitialAdLoadCallback(onAdLoaded: (ad) {
-          interstitialAd = ad;
-          setState(() {
-            isAdLoaded = true;
-          });
-        }, onAdFailedToLoad: (error) {
-          interstitialAd.dispose();
-        }));
   }
 
   GlobalKey previewContainer = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.sizeOf(context).height;
+    double width = MediaQuery.sizeOf(context).width;
     return SizedBox(
       width: double.infinity,
       child: RepaintBoundary(
         key: previewContainer,
         child: Screenshot(
           controller: _screenshotController,
-          child: Card(
-            elevation: 8,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.0),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Container(
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(15),
-                      topRight: Radius.circular(15),
-                    ),
-                    color: Color.fromARGB(255, 24, 94, 247),
-                  ),
-                  child:  ListTile(
-                    leading:const Icon(
-                      Icons.water_drop,
-                      size: 50,
-                      color: Colors.white,
-                    ),
-                    title: Text(
-                      '${footprint.toInt()} litres of water',
-                      style:const TextStyle(
-                        fontSize: 28,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
+          child: SizedBox(
+            height: height * 0.5,
+            child: Card(
+              color: Colors.white,
+              elevation: 3,
+              shadowColor: Colors.grey.shade600,
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  children: <Widget>[
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(10.0),
+                      child: Image.asset(
+                        'assets/shareCardImage.png',
+                        height: height * 0.24,
+                        fit: BoxFit.fill,
+                        width: width * 0.86,
                       ),
                     ),
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: Text(
-                    "Congrats you're better than",
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w400,
+                    SizedBox(
+                      height: height * 0.03,
                     ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: Text(
-                    "60%",
-                    style: TextStyle(
-                      fontSize: 33,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(top: 5.0, bottom: 15),
-                  child: Text(
-                    "of the users 😁❤️\nKeep Going!!!!",
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w400,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                      left: 16.0, bottom: 16.0, right: 16),
-                  child: ElevatedButton.icon(
-                    onPressed: _takeScreenshot,
-                    icon: const Icon(Icons.share),
-                    label: const Text('Share with your friends'),
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
+                    RichText(
+                      text: TextSpan(
+                        text: 'Today\'s Water Footprint :',
+                        style: TextStyle(
+                            fontSize: width * 0.045, color: Colors.black),
+                        children: <TextSpan>[
+                          TextSpan(
+                              text: '${footprint.toInt()} Litres',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: width * 0.045)),
+                        ],
                       ),
-                      padding: const EdgeInsets.symmetric(vertical: 12.0),
-                      backgroundColor: const Color.fromARGB(255, 24, 94, 247),
-                      foregroundColor: Colors.white,
                     ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                      left: 16.0, bottom: 16.0, right: 16),
-                  child: ElevatedButton.icon(
-                    onPressed: () {
-                      if (isAdLoaded) {
-                        interstitialAd.show();
-                      }
-                    },
-                    icon: const Icon(Icons.ads_click),
-                    label: const Text('Ads Button'),
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
+                    SizedBox(
+                      height: height * 0.03,
+                    ),
+                    Text('Preserve water, preserve life.',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: width * 0.045)),
+                    SizedBox(
+                      height: height * 0.03,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          left: 16.0, bottom: 16.0, right: 16),
+                      child: ElevatedButton.icon(
+                        onPressed: _takeScreenshot,
+                        icon: const Icon(Icons.share),
+                        label: Text(
+                          'Share with your friends',
+                          style: TextStyle(fontSize: width * 0.04),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          backgroundColor:
+                              const Color.fromARGB(255, 24, 94, 247),
+                          foregroundColor: Colors.white,
+                        ),
                       ),
-                      padding: const EdgeInsets.symmetric(vertical: 12.0),
-                      backgroundColor: const Color.fromARGB(255, 0, 140, 37),
-                      foregroundColor: Colors.white,
                     ),
-                  ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
         ),
