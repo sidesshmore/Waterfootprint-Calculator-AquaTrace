@@ -1,5 +1,8 @@
+import 'dart:ffi';
 import 'dart:io';
 
+import 'package:aqua_trace/features/Aqua_Trace/repos/getItems.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:screenshot/screenshot.dart';
@@ -9,6 +12,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'dart:ui' as ui;
 import 'package:path_provider/path_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ShareCard extends StatefulWidget {
   const ShareCard({Key? key}) : super(key: key);
@@ -19,6 +23,7 @@ class ShareCard extends StatefulWidget {
 
 class _ShareCardState extends State<ShareCard> {
   final _screenshotController = ScreenshotController();
+   int footprint=0;
 
   Future<void> _takeScreenshot() {
     List<String> imagePaths = [];
@@ -42,9 +47,23 @@ class _ShareCardState extends State<ShareCard> {
     });
   }
 
+
+  Future<void> getTotal()async{
+  final dio=Dio();
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  final uid=prefs.getString('uid');
+  final response=await dio.get('https://long-pink-swallow-belt.cyclic.app/user/today/${uid}');
+  if (response.statusCode == 200) {
+  setState(() {
+    footprint=(int.parse(response.data["total"]));
+  });
+  }
+ } 
+
   @override
   void initState() {
     super.initState();
+    getTotal();
     initInterstitialAd();
   }
 
@@ -93,15 +112,15 @@ class _ShareCardState extends State<ShareCard> {
                     ),
                     color: Color.fromARGB(255, 24, 94, 247),
                   ),
-                  child: const ListTile(
-                    leading: Icon(
+                  child:  ListTile(
+                    leading:const Icon(
                       Icons.water_drop,
                       size: 50,
                       color: Colors.white,
                     ),
                     title: Text(
-                      '1500 litres of water',
-                      style: TextStyle(
+                      '$footprint litres of water',
+                      style:const TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
