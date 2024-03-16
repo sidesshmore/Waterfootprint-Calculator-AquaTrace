@@ -37,7 +37,9 @@ class _ShareCardState extends State<ShareCard> {
       imagePaths.add(imgFile.path);
       imgFile.writeAsBytes(pngBytes).then((value) async {
         await Share.shareFiles(imagePaths,
-            sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
+            sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size,
+            text:
+                "Download Aqua trace and start tracking your WaterFootprint now! \n https://pub.dev/packages/share_plus");
       }).catchError((onError) {
         print(onError);
       });
