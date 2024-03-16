@@ -44,6 +44,8 @@ dependencies:
   shared_preferences: ^2.2.2
   dio: ^5.4.0
   http: ^1.2.1
+  dash_chat_2: ^0.0.20
+  flutter_swiper_view: ^1.1.8
 
 
 dev_dependencies:

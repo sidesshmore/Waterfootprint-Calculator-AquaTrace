@@ -87,7 +87,7 @@ class _RegisterState extends State<Register> {
                             height: 15,
                           ),
                           SizedBox(
-                            width: 380,
+                            width: screenWidth * 0.84,
                             child: TextField(
                               controller: _namecontroller,
                               decoration: InputDecoration(
@@ -102,7 +102,7 @@ class _RegisterState extends State<Register> {
                             height: 30,
                           ),
                           SizedBox(
-                            width: 380,
+                            width: screenWidth * 0.84,
                             child: TextField(
                               controller: _emailcontroller,
                               decoration: InputDecoration(
@@ -117,7 +117,7 @@ class _RegisterState extends State<Register> {
                             height: 30,
                           ),
                           SizedBox(
-                            width: 380,
+                            width: screenWidth * 0.84,
                             child: TextField(
                               controller: _passwordcontroller,
                               obscureText: true,

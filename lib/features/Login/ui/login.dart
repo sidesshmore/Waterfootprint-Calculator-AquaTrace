@@ -26,11 +26,9 @@ class _LoginState extends State<Login> {
       listener: (context, state) {
         if (state is NavigateToDashboard) {
           Navigator.pushNamed(context, 'aqua_trace');
-        } 
-        else if (state is NavigateToRegister) {
+        } else if (state is NavigateToRegister) {
           Navigator.pushNamed(context, 'register');
-        } 
-        else if (state is NavigateToErrorState) {
+        } else if (state is NavigateToErrorState) {
           Navigator.pushNamed(context, 'errors');
         }
       },
@@ -88,7 +86,7 @@ class _LoginState extends State<Login> {
                             height: 15,
                           ),
                           SizedBox(
-                            width: 380,
+                            width: screenWidth * 0.80,
                             child: TextField(
                               controller: _emailcontroller,
                               decoration: InputDecoration(
@@ -104,7 +102,7 @@ class _LoginState extends State<Login> {
                             height: 30,
                           ),
                           SizedBox(
-                            width: 380,
+                            width: screenWidth * 0.80,
                             child: TextField(
                               controller: _passwordcontroller,
                               obscureText: true,

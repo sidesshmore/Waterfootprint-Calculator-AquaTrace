@@ -19,7 +19,6 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
 
   void _openAddExpenseOverlay() {
     showModalBottomSheet(
-      
         isScrollControlled: true,
         context: context,
         builder: (ctx) => AddModal());
