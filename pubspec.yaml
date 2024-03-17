@@ -46,6 +46,7 @@ dependencies:
   dash_chat_2: ^0.0.20
   flutter_swiper_view: ^1.1.8
   confetti: ^0.7.0
+  syncfusion_flutter_datepicker: ^25.1.35
 
 
 dev_dependencies:
