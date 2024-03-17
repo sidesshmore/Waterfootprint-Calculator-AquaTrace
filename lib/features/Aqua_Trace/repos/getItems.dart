@@ -12,6 +12,7 @@ class getItemsRepo{
    if (response.statusCode == 200) {
   final data=response.data["result"];
   List dataList=data;
+  lists.clear();
   for(int i=0;i<dataList.length;i++){
     IncomingList list=IncomingList.fromMap(dataList[i] as Map<String,dynamic>);
     lists.add(list);

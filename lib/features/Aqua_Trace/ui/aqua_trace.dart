@@ -20,10 +20,6 @@ class _AquaTraceState extends State<AquaTrace> {
 
   
   void getTotal()async{
-
-
-    
-
     List<IncomingList> inLists=await getItemsRepo.getList();
     double p_total=await getItemsRepo.getTotal();
     setState(() {
@@ -31,6 +27,14 @@ class _AquaTraceState extends State<AquaTrace> {
       total=p_total;
     });
   }
+
+  void _getTotalByDate(List<IncomingList> lists,double _total)async{
+    setState(() {
+      inList=lists;
+      total=_total;
+    });
+  }
+
 
   @override
   void initState(){
@@ -63,7 +67,7 @@ class _AquaTraceState extends State<AquaTrace> {
         child:  Column(
           children: [
             const SizedBox(height: 60,),
-            const TopBar(),
+             TopBar(_getTotalByDate),
             const SizedBox(height:60),
              chartWidget(total: total,),
             const SizedBox(height:30),
