@@ -23,7 +23,7 @@ class ErrorScreen extends StatelessWidget {
               ),
               SizedBox(
                 height: 20,
-              ), // Add some space between image and text
+              ),
               Text(
                 'Error: Use correct password/email or create a new account',
                 style: TextStyle(fontSize: 19, fontWeight: FontWeight.w900),
