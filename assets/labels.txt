@@ -1,0 +1,31 @@
+0 Beetroot
+1 Dhokla
+2 Gajar Halwa
+3 Cucumber
+4 Grapes
+5 Pear
+6 Jalebi
+7 Medu Vada
+8 Orange
+9 Pasta
+10 Brinjal
+11 Apple
+12 Samosa
+13 Spinach
+14 Strawberry
+15 Watermelon
+16 Banana
+17 Mango
+18 Kiwi
+19 Almonds
+20 Avocado
+21 Bell Pepper
+22 Oats
+23 Dates
+24 Guava
+25 Carrot
+26 Peach
+27 Pineapple
+28 Plum
+29 Okra
+30 Gulab Jamun

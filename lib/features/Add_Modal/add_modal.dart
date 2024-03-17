@@ -1,5 +1,6 @@
 import 'package:aqua_trace/features/Activity_Modal/ui/activity_modal.dart';
 import 'package:aqua_trace/features/Food_Modal/food_modal.dart';
+import 'package:aqua_trace/features/Try_With_AI/trywithai.dart';
 import 'package:flutter/material.dart';
 
 class AddModal extends StatefulWidget {
@@ -13,7 +14,7 @@ class _AddModalState extends State<AddModal> with SingleTickerProviderStateMixin
  late TabController _tabController;
  @override
   void initState() {
-    _tabController =  TabController(length: 2, vsync: this);
+    _tabController =  TabController(length: 3, vsync: this);
     super.initState();
   }
 
@@ -41,6 +42,9 @@ class _AddModalState extends State<AddModal> with SingleTickerProviderStateMixin
                 ),
                 Tab(
                   text: 'Activity',
+                ),
+                Tab(
+                  icon: Icon(Icons.camera_alt),
                 )
               ],
               controller: _tabController,
@@ -51,7 +55,8 @@ class _AddModalState extends State<AddModal> with SingleTickerProviderStateMixin
               child: TabBarView(
                 children: [
                   FoodModal(),
-                  ActivityModal()
+                  ActivityModal(),
+                  TryWithAI()
                 ],
                 controller: _tabController,
               ),
