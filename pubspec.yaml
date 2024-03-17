@@ -48,6 +48,7 @@ dependencies:
   confetti: ^0.7.0
   image_picker:
   tensorflow_lite_flutter:
+  syncfusion_flutter_datepicker: ^25.1.35
 
 
 dev_dependencies:
