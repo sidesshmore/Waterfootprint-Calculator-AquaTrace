@@ -12,17 +12,17 @@ class _ProfilePageState extends State<ProfilePage> {
 
   String? userName='';
 
-  // void getUsername()async{
-  //   final SharedPreferences prefs = await SharedPreferences.getInstance();
-  //  String? name= await prefs.getString('uid');
-  //   setState(() {
-  //     userName=name;
-  //   });
-  // }
+  void getUsername()async{
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? name= await prefs.getString('uid');
+    setState(() {
+      userName=name;
+    });
+  }
 
   @override
   void initState(){
-    // getUsername();
+    getUsername();
     super.initState();
   }
 

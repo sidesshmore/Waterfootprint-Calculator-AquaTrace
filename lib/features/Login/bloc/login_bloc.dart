@@ -25,6 +25,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       emit(NavigateToErrorState());
     }else{
       await prefs.setString('uid',user.uid);
+     
       emit(NavigateToDashboard());
     }
   }

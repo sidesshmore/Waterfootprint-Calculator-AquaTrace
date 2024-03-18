@@ -59,7 +59,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
           ),
           const BottomNavigationBarItem(
             icon: Icon(
-              CupertinoIcons.chart_bar_alt_fill,
+              CupertinoIcons.lightbulb_fill,
               size: 25,
             ),
             label: '',

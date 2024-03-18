@@ -25,6 +25,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     }
     else{
       await prefs.setString('uid',user.uid);
+    
       emit(NavigateToDashboard());
     }
   }
