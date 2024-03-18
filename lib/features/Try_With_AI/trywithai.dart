@@ -48,7 +48,7 @@ class _TryWithAIState extends State<TryWithAI> {
     }
     setState(() { 
       _output = prediction;
-      select=(_output![0]['label']).toString().substring(3);
+      select=(_output![0]['label']).toString().substring(2).trim();
       print(_output![0].toString());
     });
   }
