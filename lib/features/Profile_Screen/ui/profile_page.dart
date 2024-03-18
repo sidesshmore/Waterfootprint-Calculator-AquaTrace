@@ -20,11 +20,11 @@ class _ProfilePageState extends State<ProfilePage> {
   //   });
   // }
 
-  @override
-  void initState(){
-    // getUsername();
-    super.initState();
-  }
+  // @override
+  // void initState(){
+  //   // getUsername();
+  //   super.initState();
+  // }
 
  @override
   Widget build(BuildContext context) {
@@ -45,18 +45,18 @@ class _ProfilePageState extends State<ProfilePage> {
       body: ListView(
         padding: const EdgeInsets.all(12),
         children: [
-           Column(
+           const Column(
             children: [
-              const CircleAvatar(
+               CircleAvatar(
                 radius: 50,
                 backgroundImage: AssetImage('assets/memoji2.JPEG'),
               ),
-              const SizedBox(
+               SizedBox(
                 height: 10,
               ),
-              Text(
-                '$userName',
-                style: const TextStyle(
+               Text(
+                'Aqua Soldier',
+                style:  TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
