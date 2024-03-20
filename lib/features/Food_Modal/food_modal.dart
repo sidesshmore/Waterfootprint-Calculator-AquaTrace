@@ -22,34 +22,35 @@ class _FoodModalState extends State<FoodModal> {
   final _itemController = TextEditingController();
   final _quantityController = TextEditingController();
   final AddfoodBloc addfoodbloc = AddfoodBloc();
-  static  List<String> _kOptions = [];
+  static List<String> _kOptions = [];
 
-  void getAllFood()async{
+  void getAllFood() async {
     List<String> lists = [];
-  final dio=Dio();
-  final SharedPreferences prefs = await SharedPreferences.getInstance();
-  final uid=prefs.getString('uid');
-  final response=await dio.get('https://long-pink-swallow-belt.cyclic.app/getallfood');
-   if (response.statusCode == 200) {
-  final data=response.data["result"];
-  List dataList=data;
-  for(int i=0;i<dataList.length;i++){
-    AllFood list=AllFood.fromMap(dataList[i] as Map<String,dynamic>);
-    lists.add(list.fooditems);
-  }
-    setState(() {
-      _kOptions=lists;
-    });
-   }
-   else{
-    setState(() {
-      _kOptions=[];
-    });;
-   }
+    final dio = Dio();
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final uid = prefs.getString('uid');
+    final response =
+        await dio.get('https://long-pink-swallow-belt.cyclic.app/getallfood');
+    if (response.statusCode == 200) {
+      final data = response.data["result"];
+      List dataList = data;
+      for (int i = 0; i < dataList.length; i++) {
+        AllFood list = AllFood.fromMap(dataList[i] as Map<String, dynamic>);
+        lists.add(list.fooditems);
+      }
+      setState(() {
+        _kOptions = lists;
+      });
+    } else {
+      setState(() {
+        _kOptions = [];
+      });
+      ;
+    }
   }
 
- @override
-  void initState(){
+  @override
+  void initState() {
     getAllFood();
     super.initState();
   }
@@ -70,22 +71,31 @@ class _FoodModalState extends State<FoodModal> {
                 child: Column(
                   children: [
                     Autocomplete<String>(
+                      fieldViewBuilder: ((context, textEditingController,
+                              focusNode, onFieldSubmitted) =>
+                          TextFormField(
+                            focusNode: focusNode,
+                            onEditingComplete: onFieldSubmitted,
+                            controller: textEditingController,
+                            decoration: const InputDecoration(
+                                hintText:
+                                    'Enter a FoodItem'), // placeholder text
+                          )),
                       optionsBuilder: (TextEditingValue textEditingValue) {
                         if (textEditingValue.text == '') {
                           return const Iterable<String>.empty();
                         }
                         return _kOptions.where((String option) {
-                          return option.toLowerCase()
+                          return option
+                              .toLowerCase()
                               .contains(textEditingValue.text.toLowerCase());
                         });
                       },
                       onSelected: (String selection) {
                         setState(() {
-                           _itemController.text=selection;
+                          _itemController.text = selection;
                         });
-                       
                       },
-
                     ),
                     Row(
                       children: [

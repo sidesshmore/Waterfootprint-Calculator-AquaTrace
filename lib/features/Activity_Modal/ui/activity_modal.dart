@@ -74,6 +74,16 @@ class _ActivityModalState extends State<ActivityModal> {
                 child: Column(
                   children: [
                     Autocomplete<String>(
+                      fieldViewBuilder: ((context, textEditingController,
+                              focusNode, onFieldSubmitted) =>
+                          TextFormField(
+                            focusNode: focusNode,
+                            onEditingComplete: onFieldSubmitted,
+                            controller: textEditingController,
+                            decoration: const InputDecoration(
+                                hintText:
+                                    'Enter a Activity'), 
+                          )),
                       optionsBuilder: (TextEditingValue textEditingValue) {
                         if (textEditingValue.text == '') {
                           return const Iterable<String>.empty();

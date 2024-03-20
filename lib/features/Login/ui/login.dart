@@ -142,7 +142,7 @@ class _LoginState extends State<Login> {
                                       password: _passwordcontroller.text));
                                 },
                                 child: const Text(
-                                  'Sign Up',
+                                  'Login',
                                   style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.w600,
