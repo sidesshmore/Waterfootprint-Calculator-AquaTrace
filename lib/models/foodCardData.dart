@@ -19,73 +19,73 @@ List<FoodCard> foodList = [
     foodURL:
         'https://www.india.com/wp-content/uploads/2022/01/beetroot-g6a2b9967e_1280.jpg',
     foodName: 'Beetroot',
-    blueWFP: '10',
-    greenWFP: '15',
+    blueWFP: '130',
+    greenWFP: '250',
     greyWFP: '20',
   ),
   FoodCard(
     foodURL:
         'https://images.aws.nestle.recipes/original/69111af01e9114ea805c5fa4821c6a70_Khaman_Dhokla_Plating.jpg',
     foodName: 'Dhokla',
-    blueWFP: '5',
-    greenWFP: '8',
-    greyWFP: '12',
+    blueWFP: '500',
+    greenWFP: '800',
+    greyWFP: '70',
   ),
   FoodCard(
     foodURL:
         'https://www.sugarandspace.in/wp-content/uploads/2020/05/Carrot_Halwa_Recipe-0834.jpg',
     foodName: 'Gajar Halwa',
-    blueWFP: '25',
-    greenWFP: '30',
-    greyWFP: '35',
+    blueWFP: '300',
+    greenWFP: '400',
+    greyWFP: '50',
   ),
   FoodCard(
     foodURL:
         'https://www.iafaforallergy.com/wp-content/uploads/2023/12/Cucumber-Kheera-Cucumis-Sativus.jpg',
     foodName: 'Cucumber',
-    blueWFP: '3',
-    greenWFP: '5',
-    greyWFP: '8',
+    blueWFP: '250',
+    greenWFP: '300',
+    greyWFP: '30',
   ),
   FoodCard(
     foodURL:
         'https://frugivore-bucket.s3.amazonaws.com/media/package/img_three/2023-04-18/green_grapes_2.jpg',
     foodName: 'Grapes',
-    blueWFP: '12',
-    greenWFP: '18',
-    greyWFP: '22',
+    blueWFP: '560',
+    greenWFP: '820',
+    greyWFP: '40',
   ),
   FoodCard(
     foodURL:
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp_YRyCWbgZ4g-9Ntug2ZK2_2DGiDZUDmRYA&usqp=CAU',
     foodName: 'Pear',
-    blueWFP: '8',
-    greenWFP: '10',
-    greyWFP: '15',
+    blueWFP: '180',
+    greenWFP: '280',
+    greyWFP: '30',
   ),
   FoodCard(
     foodURL:
         'https://www.kailashsweets.com/upload/product/ghee-sweets-2-20230809122905.jpg',
     foodName: 'Jalebi',
-    blueWFP: '30',
-    greenWFP: '35',
-    greyWFP: '40',
+    blueWFP: '600',
+    greenWFP: '900',
+    greyWFP: '80',
   ),
   FoodCard(
     foodURL:
         'https://www.chefkunalkapur.com/wp-content/uploads/2021/06/Medu-Vada-1300x867.jpg?v=1623509746',
     foodName: 'Medu Vada',
-    blueWFP: '20',
-    greenWFP: '25',
-    greyWFP: '30',
+    blueWFP: '350',
+    greenWFP: '500',
+    greyWFP: '60',
   ),
   FoodCard(
     foodURL:
         'https://www.tastingtable.com/img/gallery/are-oranges-named-after-the-color/l-intro-1666984048.jpg',
     foodName: 'Orange',
-    blueWFP: '6',
-    greenWFP: '9',
-    greyWFP: '13',
+    blueWFP: '560',
+    greenWFP: '820',
+    greyWFP: '40',
   ),
   FoodCard(
     foodURL:
