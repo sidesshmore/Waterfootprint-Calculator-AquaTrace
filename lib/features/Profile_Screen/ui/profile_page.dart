@@ -127,7 +127,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             color: Colors.white,
                           ),
                           title: Text(
-                            'Sidessh More',
+                            'Sidessh',
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 color: Colors.white),
@@ -189,7 +189,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             color: Colors.white,
                           ),
                           title: Text(
-                            'Arsh Pawar',
+                            'Arsh',
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 color: Colors.white),
