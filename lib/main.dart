@@ -19,6 +19,7 @@ void main() async {
   );
   runApp(MaterialApp(
     theme: ThemeData(scaffoldBackgroundColor: Colors.white),
+    // theme: ThemeData.dark(),
     debugShowCheckedModeBanner: false,
     initialRoute: 'login',
     routes: {

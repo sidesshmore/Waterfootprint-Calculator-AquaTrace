@@ -9,8 +9,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-
-  String? userName='';
+  String? userName = '';
 
   // void getUsername()async{
   //   final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -26,7 +25,7 @@ class _ProfilePageState extends State<ProfilePage> {
   //   super.initState();
   // }
 
- @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -35,28 +34,22 @@ class _ProfilePageState extends State<ProfilePage> {
         foregroundColor: Colors.black,
         title: const Text('Profile'),
         centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.settings_rounded),
-          ),
-        ],
       ),
       body: ListView(
         padding: const EdgeInsets.all(12),
         children: [
-           const Column(
+          const Column(
             children: [
-               CircleAvatar(
+              CircleAvatar(
                 radius: 50,
                 backgroundImage: AssetImage('assets/memoji2.JPEG'),
               ),
-               SizedBox(
+              SizedBox(
                 height: 10,
               ),
-               Text(
+              Text(
                 'Aqua Soldier',
-                style:  TextStyle(
+                style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
@@ -97,18 +90,6 @@ class CustomListItem {
 }
 
 List<CustomListItem> customListItems = [
-  CustomListItem(
-    icon: Icons.edit,
-    title: "Change Details",
-  ),
-  CustomListItem(
-    icon: Icons.bug_report_outlined,
-    title: "Report Bug",
-  ),
-  CustomListItem(
-    title: "Notifications",
-    icon: Icons.notifications,
-  ),
   CustomListItem(
     title: "Logout",
     icon: Icons.logout,
