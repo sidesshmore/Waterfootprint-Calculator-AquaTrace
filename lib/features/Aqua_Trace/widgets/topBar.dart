@@ -1,6 +1,7 @@
 import 'package:aqua_trace/models/list.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
@@ -22,7 +23,7 @@ Future<List<IncomingList>> getList()async{
   final dio=Dio();
   final SharedPreferences prefs = await SharedPreferences.getInstance();
   final uid=prefs.getString('uid');
-  final response=await dio.get('https://long-pink-swallow-belt.cyclic.app/user/date/${uid}',data: {"date":_selectedDate.toString().substring(0,10)});
+  final response=await dio.get('${dotenv.env["URL"]}/user/date/${uid}',data: {"date":_selectedDate.toString().substring(0,10)});
   print(response.data);
    if (response.statusCode == 200) {
   final data=response.data["result"];
@@ -45,7 +46,7 @@ Future<List<IncomingList>> getList()async{
   final dio=Dio();
   final SharedPreferences prefs = await SharedPreferences.getInstance();
   final uid=prefs.getString('uid');
-  final response=await dio.get('https://long-pink-swallow-belt.cyclic.app/user/date/${uid}',data: {"date":_selectedDate.toString().substring(0,10)});
+  final response=await dio.get('${dotenv.env["URL"]}/user/date/${uid}',data: {"date":_selectedDate.toString().substring(0,10)});
   print(response.data);
   if (response.statusCode == 200) {
   return double.parse(response.data["total"]);

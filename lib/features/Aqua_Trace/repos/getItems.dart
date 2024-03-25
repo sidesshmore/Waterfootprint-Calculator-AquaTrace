@@ -1,5 +1,6 @@
 import 'package:aqua_trace/models/list.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class getItemsRepo{
@@ -8,7 +9,7 @@ class getItemsRepo{
   final dio=Dio();
   final SharedPreferences prefs = await SharedPreferences.getInstance();
   final uid=prefs.getString('uid');
-  final response=await dio.get('https://long-pink-swallow-belt.cyclic.app/user/today/${uid}');
+  final response=await dio.get('${dotenv.env["URL"]}/user/today/${uid}');
    if (response.statusCode == 200) {
   final data=response.data["result"];
   List dataList=data;
@@ -28,7 +29,7 @@ class getItemsRepo{
   final dio=Dio();
   final SharedPreferences prefs = await SharedPreferences.getInstance();
   final uid=prefs.getString('uid');
-  final response=await dio.get('https://long-pink-swallow-belt.cyclic.app/user/today/${uid}');
+  final response=await dio.get('${dotenv.env["URL"]}/user/today/${uid}');
   if (response.statusCode == 200) {
   return double.parse(response.data["total"]);
   }

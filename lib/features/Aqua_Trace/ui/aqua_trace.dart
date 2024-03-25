@@ -14,7 +14,8 @@ class AquaTrace extends StatefulWidget {
 
 class _AquaTraceState extends State<AquaTrace> {
 
-   double total=0;
+    double total=3800;
+
 
     List<IncomingList> inList=[];
 
@@ -69,7 +70,7 @@ class _AquaTraceState extends State<AquaTrace> {
             const SizedBox(height: 60,),
              TopBar(_getTotalByDate),
             const SizedBox(height:60),
-             chartWidget(total: total,),
+             chartWidget(total: total,list_length: inList.length,),
             const SizedBox(height:30),
             Container(
               margin: const EdgeInsets.only(right:260),

@@ -3,6 +3,7 @@ import 'package:aqua_trace/features/Aqua_Trace/widgets/trackedListCard.dart';
 import 'package:aqua_trace/models/list.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class TrackedList extends StatefulWidget {
   const TrackedList({required this.inList, super.key});
@@ -36,7 +37,7 @@ class _TrackedListState extends State<TrackedList> {
         // ),
         onDismissed: (direction) async{
                             final dio = Dio();
-                            final response = await dio.delete('https://long-pink-swallow-belt.cyclic.app/delete/${widget.inList[index].id.toString()}',);
+                            final response = await dio.delete('${dotenv.env["URL"]}/delete/${widget.inList[index].id.toString()}',);
 
                             if (response.statusCode == 200) {
                               Navigator.pushNamedAndRemoveUntil(

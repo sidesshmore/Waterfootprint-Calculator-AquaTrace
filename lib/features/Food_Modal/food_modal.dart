@@ -8,6 +8,7 @@ import 'package:aqua_trace/models/servingCategory.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class FoodModal extends StatefulWidget {
@@ -30,7 +31,7 @@ class _FoodModalState extends State<FoodModal> {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     final uid = prefs.getString('uid');
     final response =
-        await dio.get('https://long-pink-swallow-belt.cyclic.app/getallfood');
+        await dio.get('${dotenv.env["URL"]}/getallfood');
     if (response.statusCode == 200) {
       final data = response.data["result"];
       List dataList = data;
@@ -161,7 +162,7 @@ class _FoodModalState extends State<FoodModal> {
                                 item.category.toString().substring(9);
                             final dio = Dio();
                             final response = await dio.post(
-                                'https://long-pink-swallow-belt.cyclic.app/add',
+                                '${dotenv.env["URL"]}/add',
                                 data: {
                                   "uid": prefs.getString('uid'),
                                   "item": item.itemName,

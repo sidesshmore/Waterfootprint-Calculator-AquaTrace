@@ -49,6 +49,7 @@ dependencies:
   image_picker:
   tensorflow_lite_flutter:
   syncfusion_flutter_datepicker: ^25.1.35
+  flutter_dotenv: ^5.1.0
 
 
 dev_dependencies:
@@ -77,7 +78,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/
-  #   - images/a_dot_ham.jpeg
+    - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

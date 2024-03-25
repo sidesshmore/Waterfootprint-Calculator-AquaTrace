@@ -2,6 +2,7 @@ import 'dart:ffi';
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -51,7 +52,7 @@ class _ShareCardState extends State<ShareCard> {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     final uid = prefs.getString('uid');
     final response = await dio
-        .get('https://long-pink-swallow-belt.cyclic.app/user/today/${uid}');
+        .get('${dotenv.env["URL"]}/user/today/${uid}');
     print(response.data);
     if (response.statusCode == 200) {
       setState(() {

@@ -5,6 +5,7 @@ import 'package:aqua_trace/models/servingCategory.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tensorflow_lite_flutter/tensorflow_lite_flutter.dart';
@@ -194,7 +195,7 @@ class _TryWithAIState extends State<TryWithAI> {
                     final category = item.category.toString().substring(9);
                     final dio = Dio();
                     final response = await dio.post(
-                        'https://long-pink-swallow-belt.cyclic.app/add',
+                        '${dotenv.env["URL"]}/add',
                         data: {
                           "uid": prefs.getString('uid'),
                           "item": select,
