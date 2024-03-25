@@ -43,6 +43,7 @@ class _ProfilePageState extends State<ProfilePage> {
     double width = MediaQuery.sizeOf(context).width;
     return Scaffold(
       appBar: AppBar(
+          automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.black,
@@ -77,22 +78,27 @@ class _ProfilePageState extends State<ProfilePage> {
             final tile = customListItems[index];
             return Padding(
               padding: const EdgeInsets.only(bottom: 5),
-              child: Card(
-                elevation: 4,
-                shadowColor: Colors.black12,
-                child: ListTile(
-                  leading: Icon(tile.icon),
-                  title: Text(tile.title),
-                  trailing: const Icon(Icons.chevron_right),
+              child: InkWell(
+                onTap: (){
+                  Navigator.pushNamedAndRemoveUntil(context, 'login', (route) => false);
+                },
+                child: Card(
+                  elevation: 4,
+                  shadowColor: Colors.black12,
+                  child: ListTile(
+                    leading: Icon(tile.icon),
+                    title: Text(tile.title),
+                    trailing: const Icon(Icons.chevron_right),
+                  ),
                 ),
               ),
             );
           }),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.01,
+            height: MediaQuery.of(context).size.height * 0.001,
           ),
           Container(
-            height: height * 0.42,
+            height: height * 0.44,
             decoration: BoxDecoration(
                 color: Colors.black, borderRadius: BorderRadius.circular(20)),
             child: Column(
@@ -164,7 +170,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             color: Colors.white,
                           ),
                           title: Text(
-                            'Shivraj Murali',
+                            'Shivraj',
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 color: Colors.white),

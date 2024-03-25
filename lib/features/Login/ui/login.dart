@@ -118,24 +118,25 @@ class _LoginState extends State<Login> {
                             height: 30,
                           ),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              TextButton(
-                                onPressed: () {},
-                                child: const Text(
-                                  'Forgot Password?',
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ),
+                              // TextButton(
+                              //   onPressed: () {},
+                              //   child: const Text(
+                              //     'Forgot Password?',
+                              //     style: TextStyle(
+                              //       fontSize: 15,
+                              //       fontWeight: FontWeight.w600,
+                              //       color: Colors.black,
+                              //     ),
+                              //   ),
+                              // ),
                               TextButton(
                                 style: ButtonStyle(
                                     backgroundColor: MaterialStateProperty.all(
                                   const Color.fromARGB(255, 43, 127, 218),
-                                )),
+                                )
+                                ),
                                 onPressed: () {
                                   loginbloc.add(SignUpButtonClicked(
                                       email: _emailcontroller.text,

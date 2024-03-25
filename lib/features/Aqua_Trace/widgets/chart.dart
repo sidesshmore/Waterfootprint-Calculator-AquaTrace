@@ -33,7 +33,7 @@ class _chartWidgetState extends State<chartWidget> {
               : percent >= 0.25
                   ? Colors.orangeAccent
                   : Colors.red,
-      backgroundColor: Colors.blue.shade100,
+      backgroundColor: (3800 - c_total.toInt()) <= 0?Colors.red.shade200:Colors.blue.shade100,
       circularStrokeCap: CircularStrokeCap.round,
       center: Column(
         children: [
@@ -42,7 +42,7 @@ class _chartWidgetState extends State<chartWidget> {
               color: Color.fromARGB(255, 24, 94, 247), size: 70),
           const SizedBox(height: 10),
           (3800 - c_total.toInt()) <= 0
-              ? Text('${3800 - c_total.toInt()}Litres',
+              ? Text('${(3800 - c_total.toInt())*-1}Litres',
                   style: const TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
