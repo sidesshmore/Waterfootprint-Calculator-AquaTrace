@@ -93,13 +93,13 @@ class _ShareCardState extends State<ShareCard> {
                       borderRadius: BorderRadius.circular(10.0),
                       child: Image.asset(
                         'assets/shareCardImage.png',
-                        height: height * 0.24,
+                        height: height * 0.23,
                         fit: BoxFit.fill,
                         width: width * 0.86,
                       ),
                     ),
                     SizedBox(
-                      height: height * 0.03,
+                      height: height * 0.025,
                     ),
                     RichText(
                       text: TextSpan(

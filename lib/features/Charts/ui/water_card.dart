@@ -51,7 +51,7 @@ class WaterCard extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: height * 0.03,
+              height: height * 0.025,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -100,7 +100,7 @@ class WaterCard extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: height * 0.02,
+              height: height * 0.015,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,

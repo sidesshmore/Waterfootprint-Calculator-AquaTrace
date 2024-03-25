@@ -1,5 +1,12 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:simple_icons/simple_icons.dart';
+import 'package:lottie/lottie.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -9,8 +16,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-
-  String? userName='';
+  String? userName = '';
 
   // void getUsername()async{
   //   final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -26,8 +32,15 @@ class _ProfilePageState extends State<ProfilePage> {
   //   super.initState();
   // }
 
- @override
+  @override
   Widget build(BuildContext context) {
+    final Uri sidessh = Uri.parse('https://github.com/sidesshmore');
+    final Uri shakthi = Uri.parse('https://github.com/SHAKTHI-VEL');
+    final Uri arsh = Uri.parse('https://github.com/Arsh1333');
+    final Uri shivraj = Uri.parse('https://github.com/shivraj-murali');
+
+    double height = MediaQuery.sizeOf(context).height;
+    double width = MediaQuery.sizeOf(context).width;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -35,28 +48,22 @@ class _ProfilePageState extends State<ProfilePage> {
         foregroundColor: Colors.black,
         title: const Text('Profile'),
         centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.settings_rounded),
-          ),
-        ],
       ),
       body: ListView(
         padding: const EdgeInsets.all(12),
         children: [
-           const Column(
+          const Column(
             children: [
-               CircleAvatar(
+              CircleAvatar(
                 radius: 50,
-                backgroundImage: AssetImage('assets/memoji2.JPEG'),
+                backgroundImage: AssetImage('assets/AquaSoldier.png'),
               ),
-               SizedBox(
+              SizedBox(
                 height: 10,
               ),
-               Text(
+              Text(
                 'Aqua Soldier',
-                style:  TextStyle(
+                style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
@@ -64,7 +71,7 @@ class _ProfilePageState extends State<ProfilePage> {
             ],
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.08,
+            height: MediaQuery.of(context).size.height * 0.06,
           ),
           ...List.generate(customListItems.length, (index) {
             final tile = customListItems[index];
@@ -81,6 +88,114 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             );
           }),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.01,
+          ),
+          Container(
+            height: height * 0.42,
+            decoration: BoxDecoration(
+                color: Colors.black, borderRadius: BorderRadius.circular(20)),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Lottie.asset("assets/eKrpqJAJmP.json",
+                    height: height * 0.25, fit: BoxFit.fill),
+                Text(
+                  'Developed by Team Bit Busters❤️',
+                  style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: width * 0.05,
+                      color: Colors.white),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: InkWell(
+                        onTap: () {
+                          launchUrl(sidessh);
+                        },
+                        child: const ListTile(
+                          leading: Icon(
+                            SimpleIcons.github,
+                            color: Colors.white,
+                          ),
+                          title: Text(
+                            'Sidessh More',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: InkWell(
+                        onTap: () {
+                          launchUrl(shakthi);
+                        },
+                        child: const ListTile(
+                          leading: Icon(
+                            SimpleIcons.github,
+                            color: Colors.white,
+                          ),
+                          title: Text(
+                            'Shakthivel',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: InkWell(
+                        onTap: () {
+                          launchUrl(shivraj);
+                        },
+                        child: const ListTile(
+                          leading: Icon(
+                            SimpleIcons.github,
+                            color: Colors.white,
+                          ),
+                          title: Text(
+                            'Shivraj Murali',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: InkWell(
+                        onTap: () {
+                          launchUrl(arsh);
+                        },
+                        child: const ListTile(
+                          leading: Icon(
+                            SimpleIcons.github,
+                            color: Colors.white,
+                          ),
+                          title: Text(
+                            'Arsh Pawar',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );
@@ -97,18 +212,6 @@ class CustomListItem {
 }
 
 List<CustomListItem> customListItems = [
-  CustomListItem(
-    icon: Icons.edit,
-    title: "Change Details",
-  ),
-  CustomListItem(
-    icon: Icons.bug_report_outlined,
-    title: "Report Bug",
-  ),
-  CustomListItem(
-    title: "Notifications",
-    icon: Icons.notifications,
-  ),
   CustomListItem(
     title: "Logout",
     icon: Icons.logout,
