@@ -1,3 +1,4 @@
+
 import 'package:aqua_trace/features/Blog/ui/blog_card.dart';
 import 'package:aqua_trace/models/blogTextContent.dart';
 import 'package:flutter/material.dart';
@@ -7,14 +8,22 @@ class BlogPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.sizeOf(context).height;
+    double width = MediaQuery.sizeOf(context).width;
     return Scaffold(
-      body: ListView.builder(
+      body: ListView.separated(
         itemBuilder: (context, index) {
           final post = blogPosts[index];
           return BlogCard(
             postTitle: post.postTitle,
+            thumbnailContent: post.thumbnailContent,
             postContent: post.postContent,
             imageUrl: post.imageUrl,
+          );
+        },
+        separatorBuilder: (context, index) {
+          return SizedBox(
+            height: height * 0.01,
           );
         },
         itemCount: blogPosts.length,
@@ -23,55 +32,50 @@ class BlogPage extends StatelessWidget {
   }
 }
 
-
 final List<BlogTextContent> blogPosts = [
   BlogTextContent(
-    postTitle: 'Beyond the Tap: The Hidden Water Footprints in Our Lives',
+    postTitle: 'Sustainable Practices to Reduce Your Water Footprint',
+    thumbnailContent:
+        'Discover simple steps to cut water use! Fix leaks, use water-efficient appliances & adopt eco-conscious habits.',
     postContent:
-        'Water footprint is a measure of the total volume of freshwater used to produce goods and services consumed by an individual, community, or nation. It includes the water used directly and indirectly throughout the entire supply chain.',
-    imageUrl:
-        'https://www.chaitanyaproducts.com/blog/wp-content/uploads/2020/01/water-footprint.jpg',
-  ),
-  BlogTextContent(
-    postTitle: 'From Soil to Sewage: Decoding Water Footprints',
-    postContent:
-        'There are many ways to reduce your water footprint at home, such as fixing leaks, installing water-efficient appliances, practicing water-saving habits, and reducing consumption of water-intensive foods.',
+        'Want to lessen your water footprint? Start at home with these sustainable practices:\n\n- **Fix Leaks**: A dripping faucet can waste gallons each day.\n\n- **Eco-Friendly Appliances**: Invest in water-efficient models to save resources.\n\n- **Mindful Consumption**: Choose water-wise foods & minimize waste.\n\nBy adopting these habits, you can make a significant impact on conserving our precious water resources.',
     imageUrl:
         'https://www.livpuresmart.com/blog/wp-content/uploads/2023/07/Water-Footrpint.jpg',
   ),
   BlogTextContent(
-    postTitle: 'From Drip Irrigation to Aquaponics',
+    postTitle: 'Revolutionizing Water Use: Smart Solutions for Every Home',
+    thumbnailContent:
+        'Transform your home into a water-saving haven! Explore efficient appliances & sustainable practices.',
     postContent:
-        'Agriculture accounts for a significant portion of the world\'s water footprint, mainly due to irrigation of crops. Sustainable agricultural practices, such as precision irrigation and crop rotation, can help reduce the water footprint of agriculture.',
+        'Innovative solutions can revolutionize water use:\n\n- **Smart Appliances**: Opt for water-saving models that optimize usage.\n\n- **Rainwater Harvesting**: Utilize rain barrels to collect water for non-potable uses.\n\n- **Greywater Recycling**: Reuse household wastewater for irrigation & flushing.\n\nAdopt these technologies and practices to create a more sustainable future for water consumption.',
     imageUrl:
-        'https://agri-route.com/cdn/shop/articles/Micro-Irrigation-Fund.jpg?v=1687588515',
+        'https://cdn.agclassroom.org/media/uploads/LP821/Green_blue_gray_water.png',
   ),
   BlogTextContent(
-    postTitle: 'Practical Tips for Lowering Water Footprints on the Farm',
+    postTitle: 'From Field to Fork: Navigating Water Footprint in Agriculture',
+    thumbnailContent:
+        'Delve into the water-intensive world of agriculture! Discover its impact & sustainable solutions.',
     postContent:
-        'Virtual water is the water embedded in the production and trade of goods and services. Understanding virtual water can help countries make informed decisions about water use and trade policies to manage their water resources more sustainably.',
+        'Agriculture plays a significant role in water usage:\n\n- **Irrigation Practices**: Optimize irrigation techniques to minimize water wastage.\n\n- **Crop Selection**: Choose drought-resistant crops to conserve water resources.\n\n- **Sustainable Farming**: Implement practices like crop rotation & soil conservation.\n\nUnderstanding these factors is crucial for mitigating agriculture\'s water footprint and ensuring sustainable food production.',
     imageUrl:
-        'https://cdn.britannica.com/70/156670-050-7E37C3D6/Irrigation-canal-farm-field.jpg',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRfGgv08exN-rmoz0rbeguSYWQsup7fcsYMw&usqp=CAU',
   ),
   BlogTextContent(
-    postTitle: 'Corporate Responsibility for Water Footprint',
+    postTitle: 'Navigating Global Trade: The Virtual Water Phenomenon',
+    thumbnailContent:
+        'Uncover the hidden water costs in global trade! Explore virtual water & its implications.',
     postContent:
-        'Many companies are recognizing the importance of reducing their water footprint and implementing water stewardship practices throughout their operations and supply chains. Corporate responsibility for water footprint is crucial for sustainable water management.',
+        'Global trade involves more than goods; it also transfers water:\n\n- **Virtual Water**: Understand the water footprint embedded in products traded internationally.\n\n- **Supply Chain Analysis**: Assess water usage throughout the production process.\n\n- **Water Equity**: Address disparities in water access and consumption across nations.\n\nRecognizing virtual water\'s role is essential for sustainable trade practices and equitable resource management.',
+    imageUrl:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFc-mM-t1zVaN6l4mK-b-YUIU5PjK0hnBLJQ&usqp=CAU',
+  ),
+  BlogTextContent(
+    postTitle: 'Corporate Stewardship: Responsibility in Water Conservation',
+    thumbnailContent:
+        'Unlock corporate strategies for water conservation! Explore initiatives & sustainable practices.',
+    postContent:
+        'Businesses wield influence in water conservation:\n\n- **Efficiency Measures**: Implement water-saving technologies in operations.\n\n- **Stakeholder Engagement**: Collaborate with communities to manage water resources responsibly.\n\n- **Transparency & Accountability**: Report water usage and conservation efforts.\n\nBy embracing corporate stewardship, companies can contribute to water sustainability and foster positive environmental impacts.',
     imageUrl:
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlezMQibwls2HFFKn9I4vSggS1PmCTIlU1DVxBfVwrkp6hjK7PDt1lUtRZE4fTPZktUNg&usqp=CAU',
   ),
- BlogTextContent(
-    postTitle: 'Decoding Grey Water Footprints: A Sustainable Perspective',
-    postContent:
-        'Decoding Grey Water Footprints: A Sustainable Perspective.',
-    imageUrl:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwGtv6hDfSRPKIXAKIzBW_5jWXkYdgIvvUWg&usqp=CAU',
-  ),
- BlogTextContent(
-    postTitle: 'Navigating the Shades of Grey: Understanding Water Reuse',
-    postContent:
-        'Grey water footprint is a major issue for industries.',
-    imageUrl:
-        'https://i0.wp.com/atlas-scientific.com/files/industrial-waste-disposal-083123.jpg?resize=1000%2C501&ssl=1',
-  )
 ];

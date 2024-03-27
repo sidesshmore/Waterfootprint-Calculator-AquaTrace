@@ -3,90 +3,62 @@ import 'package:flutter/material.dart';
 
 class BlogCard extends StatelessWidget {
   final String postTitle;
+  final String thumbnailContent;
   final String postContent;
   final String imageUrl;
 
   const BlogCard(
-      {super.key, required this.postTitle,
-      required this.postContent,
-      required this.imageUrl});
+      {super.key,
+      required this.postTitle,
+      required this.thumbnailContent,
+      required this.imageUrl,
+      required this.postContent});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => BlogContentPage(
-                postTitle: postTitle,
-                postContent: postContent,
-                imageUrl: imageUrl,
-              ),
-            ),
-          );
-        },
-        child: Container(
-          width: double.infinity,
-          height: 200,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 2,
-              ),
-            ],
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              children: [
-                Column(
-                  children: [
-                    Image(
-                      image: NetworkImage(
-                        imageUrl,
-                      ),
-                      width: 200,
-                      height: 168,
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        postTitle,
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      Expanded(
-                        child: Text(
-                          postContent,
-                          style: const TextStyle(
-                            fontSize: 15,
-                          ),
-                          softWrap: true,
-                          overflow: TextOverflow.fade,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+    double height = MediaQuery.sizeOf(context).height;
+    double width = MediaQuery.sizeOf(context).width;
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => BlogContentPage(
+              postTitle: postTitle,
+              postContent: postContent,
+              thumbnailContent: thumbnailContent,
+              imageUrl: imageUrl,
             ),
           ),
+        );
+      },
+      child: Container(
+        margin: EdgeInsets.all(10),
+        height: height * 0.37,
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Image.network(
+              imageUrl,
+              height: height * 0.2,
+              fit: BoxFit.fill,
+            ),
+            Text(
+              postTitle,
+              style: TextStyle(
+                fontSize: width * 0.05,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              thumbnailContent,
+              style: TextStyle(
+                  fontSize: width * 0.04,
+                  fontWeight: FontWeight.w500,
+                  overflow: TextOverflow.fade),
+            ),
+          ],
         ),
       ),
     );

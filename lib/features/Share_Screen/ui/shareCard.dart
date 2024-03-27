@@ -40,7 +40,7 @@ class _ShareCardState extends State<ShareCard> {
         await Share.shareFiles(imagePaths,
             sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size,
             text:
-                "Download Aqua trace and start tracking your WaterFootprint now! \n https://pub.dev/packages/share_plus");
+                "Download Aqua trace and start tracking your WaterFootprint now! \n https://play.google.com/store/apps/details?id=com.sidesshmore.aquatrace");
       }).catchError((onError) {
         print(onError);
       });

@@ -4,11 +4,14 @@ class BlogContentPage extends StatelessWidget {
   final String postTitle;
   final String postContent;
   final String imageUrl;
+  final String thumbnailContent;
 
   const BlogContentPage(
-      {super.key, required this.postTitle,
+      {super.key,
+      required this.postTitle,
       required this.postContent,
-      required this.imageUrl});
+      required this.imageUrl,
+      required this.thumbnailContent});
 
   @override
   Widget build(BuildContext context) {
