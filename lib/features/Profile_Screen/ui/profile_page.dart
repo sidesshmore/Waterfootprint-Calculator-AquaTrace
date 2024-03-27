@@ -79,7 +79,9 @@ class _ProfilePageState extends State<ProfilePage> {
             return Padding(
               padding: const EdgeInsets.only(bottom: 5),
               child: InkWell(
-                onTap: (){
+                onTap: ()async{
+                  final SharedPreferences prefs = await SharedPreferences.getInstance();
+                  prefs.remove('uid');
                   Navigator.pushNamedAndRemoveUntil(context, 'login', (route) => false);
                 },
                 child: Card(

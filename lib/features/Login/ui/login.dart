@@ -13,6 +13,12 @@ class _LoginState extends State<Login> {
   final _emailcontroller = TextEditingController();
   final _passwordcontroller = TextEditingController();
   final LoginBloc loginbloc = LoginBloc();
+  bool _passwordVisible = true;
+
+  @override
+  void initState() {
+    _passwordVisible = false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,145 +47,157 @@ class _LoginState extends State<Login> {
             ),
           ),
           child: Scaffold(
-            resizeToAvoidBottomInset: false,
+            resizeToAvoidBottomInset: true,
             backgroundColor: Colors.transparent,
-            body: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(
-                      left: screenWidth * 0.04, top: screenHeight * 0.17),
-                  child: const Text(
-                    'AquaTrace',
-                    style: TextStyle(
-                      fontSize: 42,
-                      fontWeight: FontWeight.w600,
+            body: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: screenWidth * 0.04, top: screenHeight * 0.17),
+                    child: const Text(
+                      'AquaTrace',
+                      style: TextStyle(
+                        fontSize: 42,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                      left: 20, right: 20, top: screenHeight * 0.10),
-                  child: Stack(
-                    children: [
-                      Container(
-                        height: 300,
-                        decoration: BoxDecoration(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10)),
-                          // .withOpacity(0.6000000238418579)
-                          color: Colors.white.withOpacity(0.65),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: 20, right: 20, top: screenHeight * 0.10),
+                    child: Stack(
+                      children: [
+                        Container(
+                          height: 300,
+                          decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10)),
+                            // .withOpacity(0.6000000238418579)
+                            color: Colors.white.withOpacity(0.65),
+                          ),
                         ),
-                      ),
-                      Column(
-                        children: [
-                          const Text(
-                            'LOGIN',
-                            style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          SizedBox(
-                            width: screenWidth * 0.80,
-                            child: TextField(
-                              controller: _emailcontroller,
-                              decoration: InputDecoration(
-                                fillColor: Colors.grey.shade100,
-                                hintText: 'Email',
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
+                        Column(
+                          children: [
+                            const Text(
+                              'LOGIN',
+                              style: TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight.w500,
                               ),
                             ),
-                          ),
-                          const SizedBox(
-                            height: 30,
-                          ),
-                          SizedBox(
-                            width: screenWidth * 0.80,
-                            child: TextField(
-                              controller: _passwordcontroller,
-                              obscureText: true,
-                              decoration: InputDecoration(
+                            const SizedBox(
+                              height: 15,
+                            ),
+                            SizedBox(
+                              width: screenWidth * 0.80,
+                              child: TextField(
+                                controller: _emailcontroller,
+                                decoration: InputDecoration(
                                   fillColor: Colors.grey.shade100,
-                                  hintText: 'Password',
+                                  hintText: 'Email',
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
-                                  )),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 30,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              // TextButton(
-                              //   onPressed: () {},
-                              //   child: const Text(
-                              //     'Forgot Password?',
-                              //     style: TextStyle(
-                              //       fontSize: 15,
-                              //       fontWeight: FontWeight.w600,
-                              //       color: Colors.black,
-                              //     ),
-                              //   ),
-                              // ),
-                              TextButton(
-                                style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all(
-                                  const Color.fromARGB(255, 43, 127, 218),
-                                )
-                                ),
-                                onPressed: () {
-                                  loginbloc.add(SignUpButtonClicked(
-                                      email: _emailcontroller.text,
-                                      password: _passwordcontroller.text));
-                                },
-                                child: const Text(
-                                  'Login',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white,
                                   ),
                                 ),
                               ),
-                            ],
-                          )
-                        ],
-                      ),
-                    ],
+                            ),
+                            const SizedBox(
+                              height: 30,
+                            ),
+                            SizedBox(
+                              width: screenWidth * 0.80,
+                              child: TextField(
+                                controller: _passwordcontroller,
+                                obscureText: !_passwordVisible,
+                                decoration: InputDecoration(
+                                    fillColor: Colors.grey.shade100,
+                                    hintText: 'Password',
+                                    suffixIcon: IconButton(
+                                        onPressed: () {
+                                          setState(() {
+                                            _passwordVisible =
+                                                !_passwordVisible;
+                                          });
+                                        },
+                                        icon: Icon(_passwordVisible
+                                            ? Icons.visibility
+                                            : Icons.visibility_off)),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    )),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 30,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                TextButton(
+                                  onPressed: () {},
+                                  child: const Text(
+                                    'Forgot Password?',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                                TextButton(
+                                  style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all(
+                                    const Color.fromARGB(255, 43, 127, 218),
+                                  )),
+                                  onPressed: () {
+                                    loginbloc.add(SignUpButtonClicked(
+                                        email: _emailcontroller.text,
+                                        password: _passwordcontroller.text));
+                                  },
+                                  child: const Text(
+                                    'Login',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextButton(
-                      onPressed: () {
-                        loginbloc.add(NewHereClicked());
-                      },
-                      child: const Text(
-                        'New Here?',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black,
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextButton(
+                        onPressed: () {
+                          loginbloc.add(NewHereClicked());
+                        },
+                        child: const Text(
+                          'New Here?',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                )
-              ],
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         );

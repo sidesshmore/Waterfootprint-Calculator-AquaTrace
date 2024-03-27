@@ -15,7 +15,7 @@ class AquaTrace extends StatefulWidget {
 class _AquaTraceState extends State<AquaTrace> {
 
     double total=3800;
-
+    bool loading=true;
 
     List<IncomingList> inList=[];
 
@@ -40,12 +40,13 @@ class _AquaTraceState extends State<AquaTrace> {
   @override
   void initState(){
     getTotal();
+    loading=false;
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return  loading==false? Scaffold(
       // appBar: AppBar(
       //   title: const Text(
       //     'WATER FOOTPRINT',
@@ -80,6 +81,6 @@ class _AquaTraceState extends State<AquaTrace> {
           ],
         )
       ),
-    );
+    ):CircularProgressIndicator();
   }
 }

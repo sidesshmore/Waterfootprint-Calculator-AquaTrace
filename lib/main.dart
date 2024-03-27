@@ -11,6 +11,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:aqua_trace/features/Share_Screen/ui/share.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,11 +20,14 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+   final SharedPreferences prefs = await SharedPreferences.getInstance();
+  final uid=prefs.getString('uid');
   runApp(MaterialApp(
     theme: ThemeData(scaffoldBackgroundColor: Colors.white),
     // theme: ThemeData.dark(),
     debugShowCheckedModeBanner: false,
-    initialRoute: 'login',
+    
+    initialRoute: uid==null?'login':'aqua_trace',
     routes: {
       'login': (context) => const Login(),
       'register': (context) => const Register(),
