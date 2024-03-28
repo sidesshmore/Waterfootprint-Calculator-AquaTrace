@@ -24,7 +24,7 @@ class BlogContentPage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Image(image: NetworkImage(imageUrl)),
+              Image(image: AssetImage(imageUrl)),
               const SizedBox(
                 height: 20,
               ),
