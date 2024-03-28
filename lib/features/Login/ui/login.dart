@@ -138,7 +138,9 @@ class _LoginState extends State<Login> {
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 TextButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.pushNamed(context, 'forgot_password');
+                                  },
                                   child: const Text(
                                     'Forgot Password?',
                                     style: TextStyle(

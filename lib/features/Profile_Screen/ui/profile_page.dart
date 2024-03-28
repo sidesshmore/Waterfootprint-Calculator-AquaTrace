@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -16,8 +17,23 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+
+  final FirebaseAuth auth = FirebaseAuth.instance;
   String? userName = '';
 
+
+  void setName()async{
+    var user=await auth.currentUser;
+    setState(() {
+      userName=user!.displayName;
+    });
+  }
+
+  @override
+  void initState(){
+    setName();
+    super.initState();
+  }
   // void getUsername()async{
   //   final SharedPreferences prefs = await SharedPreferences.getInstance();
   //  String? name= await prefs.getString('uid');
@@ -53,18 +69,18 @@ class _ProfilePageState extends State<ProfilePage> {
       body: ListView(
         padding: const EdgeInsets.all(12),
         children: [
-          const Column(
+           Column(
             children: [
-              CircleAvatar(
+              const CircleAvatar(
                 radius: 50,
                 backgroundImage: AssetImage('assets/AquaSoldier.png'),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Text(
-                'Aqua Soldier',
-                style: TextStyle(
+                '$userName',
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
