@@ -12,6 +12,7 @@ import 'package:aqua_trace/features/Share_Screen/ui/share.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:showcaseview/showcaseview.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,7 +36,8 @@ void main() async {
       'errors': (context) => const ErrorScreen(),
       'profile': (context) => const ProfilePage(),
       'blog': (context) => const BlogPage(),
-      'aqua_trace': (context) => const CustomNavigationBar(),
+      'aqua_trace': (context) => ShowCaseWidget(
+          builder: Builder(builder: (context) => CustomNavigationBar())),
       'charts': (context) => const ChartsPage(),
       'share': (context) => ShareScreen(),
     },

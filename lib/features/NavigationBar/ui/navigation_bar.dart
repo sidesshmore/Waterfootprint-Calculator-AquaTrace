@@ -7,6 +7,7 @@ import 'package:aqua_trace/features/Share_Screen/ui/share.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:showcaseview/showcaseview.dart';
 
 class CustomNavigationBar extends StatefulWidget {
   const CustomNavigationBar({super.key});
@@ -16,9 +17,10 @@ class CustomNavigationBar extends StatefulWidget {
 }
 
 class _CustomNavigationBarState extends State<CustomNavigationBar> {
+  final keyOne = GlobalKey();
   int _selectedIndex = 2;
 
-  final FirebaseAnalytics analytics=FirebaseAnalytics.instance;
+  final FirebaseAnalytics analytics = FirebaseAnalytics.instance;
 
   void _openAddExpenseOverlay() {
     showModalBottomSheet(
@@ -27,7 +29,13 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
         builder: (ctx) => AddModal());
   }
 
-  static List pageNames=['ShareScreen','InfoPage','Aquatrace','BlogPage','ProfilePage'];
+  static List pageNames = [
+    'ShareScreen',
+    'InfoPage',
+    'Aquatrace',
+    'BlogPage',
+    'ProfilePage'
+  ];
 
   final List<Widget> _widgetOptions = <Widget>[
     ShareScreen(),
@@ -37,15 +45,10 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
     const ProfilePage()
   ];
 
-  void _onItemTapped(int index) async{
-
+  void _onItemTapped(int index) async {
     await analytics.logEvent(
-      name: 'pages_tracked',
-      parameters: {
-        "page_name":pageNames[index],
-        "page_index":index
-      }
-    );
+        name: 'pages_tracked',
+        parameters: {"page_name": pageNames[index], "page_index": index});
 
     setState(() {
       _selectedIndex = index;
@@ -53,8 +56,13 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
   }
 
   @override
-  void initState(){
+  void initState() {
     analytics.setAnalyticsCollectionEnabled(true);
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => ShowCaseWidget.of(context).startShowCase([
+        keyOne,
+      ]),
+    );
     super.initState();
   }
 
@@ -86,23 +94,37 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
           ),
           BottomNavigationBarItem(
             icon: InkWell(
-                onDoubleTap: () {
-                  _openAddExpenseOverlay();
-                },
-                onTap: () {
-                  setState(() {
-                    _selectedIndex = 2;
-                  });
-                },
-                child: const CircleAvatar(
-                  backgroundColor: Color.fromARGB(255, 24, 94, 247),
-                  radius: 25,
-                  child: Icon(
+              onDoubleTap: () {
+                _openAddExpenseOverlay();
+              },
+              onTap: () {
+                setState(() {
+                  _selectedIndex = 2;
+                });
+              },
+              child: CircleAvatar(
+                backgroundColor: Color.fromARGB(255, 24, 94, 247),
+                radius: 25,
+                child: Showcase(
+                  tooltipBackgroundColor: Colors.blue,
+                  tooltipBorderRadius: BorderRadius.circular(10),
+                  targetBorderRadius: BorderRadius.circular(30),
+                  targetPadding: EdgeInsets.all(10),
+                  descTextStyle: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: 14),
+                  blurValue: 1,
+                  key: keyOne,
+                  description: "Double Tap to track",
+                  child: const Icon(
                     CupertinoIcons.drop_fill,
                     color: Colors.white,
                     size: 33,
                   ),
-                )),
+                ),
+              ),
+            ),
             label: '',
           ),
           const BottomNavigationBarItem(
