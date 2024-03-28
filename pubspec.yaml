@@ -54,6 +54,7 @@ dependencies:
   url_launcher: ^6.2.5
 
   flutter_dotenv: ^5.1.0
+  firebase_analytics: ^10.9.0
 
 
 

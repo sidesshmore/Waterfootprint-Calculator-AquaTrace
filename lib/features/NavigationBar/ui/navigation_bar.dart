@@ -4,6 +4,7 @@ import 'package:aqua_trace/features/Blog/ui/blog.dart';
 import 'package:aqua_trace/features/Charts/ui/charts.dart';
 import 'package:aqua_trace/features/Profile_Screen/ui/profile_page.dart';
 import 'package:aqua_trace/features/Share_Screen/ui/share.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -17,12 +18,16 @@ class CustomNavigationBar extends StatefulWidget {
 class _CustomNavigationBarState extends State<CustomNavigationBar> {
   int _selectedIndex = 2;
 
+  final FirebaseAnalytics analytics=FirebaseAnalytics.instance;
+
   void _openAddExpenseOverlay() {
     showModalBottomSheet(
         isScrollControlled: true,
         context: context,
         builder: (ctx) => AddModal());
   }
+
+  static List pageNames=['ShareScreen','InfoPage','Aquatrace','BlogPage','ProfilePage'];
 
   final List<Widget> _widgetOptions = <Widget>[
     ShareScreen(),
@@ -32,10 +37,25 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
     const ProfilePage()
   ];
 
-  void _onItemTapped(int index) {
+  void _onItemTapped(int index) async{
+
+    await analytics.logEvent(
+      name: 'pages_tracked',
+      parameters: {
+        "page_name":pageNames[index],
+        "page_index":index
+      }
+    );
+
     setState(() {
       _selectedIndex = index;
     });
+  }
+
+  @override
+  void initState(){
+    analytics.setAnalyticsCollectionEnabled(true);
+    super.initState();
   }
 
   @override

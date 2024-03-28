@@ -44,38 +44,38 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDcxvqSs_4ljICnivvaHgW8IbGsVJsSDzs',
-    appId: '1:426649024006:web:5822eb77d5c78ea0e6b587',
-    messagingSenderId: '426649024006',
-    projectId: 'aquatrace-d47ce',
-    authDomain: 'aquatrace-d47ce.firebaseapp.com',
-    storageBucket: 'aquatrace-d47ce.appspot.com',
-    measurementId: 'G-BJCZLJEHN1',
+    apiKey: 'AIzaSyD3Tbol8NQ3gsdLW8UdpYruIVRyOqI81Hc',
+    appId: '1:925804687441:web:82940ea99538b746060870',
+    messagingSenderId: '925804687441',
+    projectId: 'aquatrace-analytics',
+    authDomain: 'aquatrace-analytics.firebaseapp.com',
+    storageBucket: 'aquatrace-analytics.appspot.com',
+    measurementId: 'G-Z0WPTNETGX',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyB5HSGHl3ihPF2T9QCqNGHBwW4uVHe2ee0',
-    appId: '1:426649024006:android:b4df7100b87ed9f9e6b587',
-    messagingSenderId: '426649024006',
-    projectId: 'aquatrace-d47ce',
-    storageBucket: 'aquatrace-d47ce.appspot.com',
+    apiKey: 'AIzaSyDRHl7MWqhECRDRII8tRG-Tfo_FHkS93WI',
+    appId: '1:925804687441:android:a582f957a897d35e060870',
+    messagingSenderId: '925804687441',
+    projectId: 'aquatrace-analytics',
+    storageBucket: 'aquatrace-analytics.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCyHbk2TUSAc8vavn62YksynCVYUModxY0',
-    appId: '1:426649024006:ios:bde3af96aa1ac3b5e6b587',
-    messagingSenderId: '426649024006',
-    projectId: 'aquatrace-d47ce',
-    storageBucket: 'aquatrace-d47ce.appspot.com',
-    iosBundleId: 'com.example.aquaTrace',
+    apiKey: 'AIzaSyAe_58dryeoTSOsmidNg7UkyMxLMcVFPX4',
+    appId: '1:925804687441:ios:d71acb725119b175060870',
+    messagingSenderId: '925804687441',
+    projectId: 'aquatrace-analytics',
+    storageBucket: 'aquatrace-analytics.appspot.com',
+    iosBundleId: 'com.sidesshmore.aquaTrace',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCyHbk2TUSAc8vavn62YksynCVYUModxY0',
-    appId: '1:426649024006:ios:1b43c7e254b6ff21e6b587',
-    messagingSenderId: '426649024006',
-    projectId: 'aquatrace-d47ce',
-    storageBucket: 'aquatrace-d47ce.appspot.com',
+    apiKey: 'AIzaSyAe_58dryeoTSOsmidNg7UkyMxLMcVFPX4',
+    appId: '1:925804687441:ios:3c8595b0e47a8297060870',
+    messagingSenderId: '925804687441',
+    projectId: 'aquatrace-analytics',
+    storageBucket: 'aquatrace-analytics.appspot.com',
     iosBundleId: 'com.example.aquaTrace.RunnerTests',
   );
 }

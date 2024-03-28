@@ -3,6 +3,7 @@ import 'package:aqua_trace/features/Aqua_Trace/widgets/chart.dart';
 import 'package:aqua_trace/features/Aqua_Trace/widgets/topBar.dart';
 import 'package:aqua_trace/features/Aqua_Trace/widgets/trackedList.dart';
 import 'package:aqua_trace/models/list.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 
 class AquaTrace extends StatefulWidget {
@@ -18,6 +19,7 @@ class _AquaTraceState extends State<AquaTrace> {
     bool loading=true;
 
     List<IncomingList> inList=[];
+
 
   
   void getTotal()async{
@@ -36,9 +38,21 @@ class _AquaTraceState extends State<AquaTrace> {
     });
   }
 
+  void _analytics() async{
+    final FirebaseAnalytics analytics=FirebaseAnalytics.instance;
+    await analytics.logEvent(
+      name: 'pages_tracked',
+      parameters: {
+        "page_name":'Aquatrace',
+        "page_index":2
+      }
+    );
+  }
+
 
   @override
   void initState(){
+    _analytics();
     getTotal();
     loading=false;
     super.initState();

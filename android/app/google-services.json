@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "426649024006",
-    "project_id": "aquatrace-d47ce",
-    "storage_bucket": "aquatrace-d47ce.appspot.com"
+    "project_number": "925804687441",
+    "project_id": "aquatrace-analytics",
+    "storage_bucket": "aquatrace-analytics.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:426649024006:android:b4df7100b87ed9f9e6b587",
+        "mobilesdk_app_id": "1:925804687441:android:a582f957a897d35e060870",
         "android_client_info": {
-          "package_name": "com.example.aqua_trace"
+          "package_name": "com.sidesshmore.aquatrace"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyB5HSGHl3ihPF2T9QCqNGHBwW4uVHe2ee0"
+          "current_key": "AIzaSyDRHl7MWqhECRDRII8tRG-Tfo_FHkS93WI"
         }
       ],
       "services": {
