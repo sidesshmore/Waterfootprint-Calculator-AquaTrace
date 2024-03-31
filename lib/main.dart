@@ -9,7 +9,7 @@ import 'package:aqua_trace/features/Profile_Screen/ui/profile_page.dart';
 import 'package:aqua_trace/features/Register/ui/register.dart';
 import 'package:aqua_trace/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:aqua_trace/features/Share_Screen/ui/share.dart';
+import 'package:aqua_trace/features/Leaderboard_Screen/ui/leaderboard_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -47,7 +47,7 @@ void main() async {
       'aqua_trace': (context) => ShowCaseWidget(
           builder: Builder(builder: (context) => CustomNavigationBar())),
       'charts': (context) => const ChartsPage(),
-      'share': (context) => ShareScreen(),
+      'share': (context) => LeaderboardScreen(),
     },
   ));
 }

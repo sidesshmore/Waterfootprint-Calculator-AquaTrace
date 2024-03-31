@@ -3,7 +3,7 @@ import 'package:aqua_trace/features/Aqua_Trace/ui/aqua_trace.dart';
 import 'package:aqua_trace/features/Blog/ui/blog.dart';
 import 'package:aqua_trace/features/Charts/ui/charts.dart';
 import 'package:aqua_trace/features/Profile_Screen/ui/profile_page.dart';
-import 'package:aqua_trace/features/Share_Screen/ui/share.dart';
+import 'package:aqua_trace/features/Leaderboard_Screen/ui/leaderboard_screen.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -38,7 +38,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
   ];
 
   final List<Widget> _widgetOptions = <Widget>[
-    ShareScreen(),
+    LeaderboardScreen(),
     const ChartsPage(),
     const AquaTrace(),
     const BlogPage(),
