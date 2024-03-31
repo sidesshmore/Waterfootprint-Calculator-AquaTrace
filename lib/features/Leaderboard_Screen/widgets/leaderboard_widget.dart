@@ -28,68 +28,19 @@ class _LeaderBoardsState extends State<LeaderBoards> {
         child: ListView.separated(
             itemBuilder: (context, index) {
               return UserLeadRow(
-                userRank: (index + 1).toString(),
+                userRank: userList[index].userRank,
                 userName: userList[index].userName,
                 userXP: userList[index].userXP,
               );
             },
             separatorBuilder: (context, index) {
               return SizedBox(
-                height: height * 0.02,
+                height: height * 0.03,
+                child: Divider(
+                  color: Colors.grey,
+                ),
               );
             },
             itemCount: userList.length));
   }
 }
-
-// Column(
-//         children: [
-//           Row(
-//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//             children: [
-//               const Text(
-//                 '1',
-//                 style: TextStyle(
-//                     fontSize: 18,
-//                     fontWeight: FontWeight.bold,
-//                     color: Colors.black),
-//               ),
-//               Row(
-//                 children: [
-//                   const CircleAvatar(
-//                     foregroundImage: AssetImage('assets/AquaSoldier.png'),
-//                   ),
-//                   SizedBox(
-//                     width: width * 0.02,
-//                   ),
-//                   const Text(
-//                     'Sidessh More',
-//                     style: TextStyle(
-//                         fontSize: 18,
-//                         fontWeight: FontWeight.bold,
-//                         color: Colors.black),
-//                   )
-//                 ],
-//               ),
-//               Row(
-//                 children: [
-//                   const CircleAvatar(
-//                     foregroundImage: AssetImage('assets/medal.png'),
-//                     backgroundColor: Colors.white,
-//                   ),
-//                   SizedBox(
-//                     width: width * 0.01,
-//                   ),
-//                   const Text(
-//                     '230',
-//                     style: TextStyle(
-//                         fontSize: 18,
-//                         fontWeight: FontWeight.bold,
-//                         color: Colors.black),
-//                   )
-//                 ],
-//               ),
-//             ],
-//           ),
-//         ],
-//       ),
