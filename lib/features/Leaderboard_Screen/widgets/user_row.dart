@@ -1,4 +1,5 @@
 import 'package:aqua_trace/features/Leaderboard_Screen/models/user_lead_list.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -29,9 +30,13 @@ class _UserLeadRowState extends State<UserLeadRow> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              widget.userRank,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+            Container(
+              width: width*0.07,
+              alignment: Alignment.center,
+              child: Text(
+                widget.userRank,
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+              ),
             ),
             SizedBox(
               width: width * 0.01,
