@@ -17,20 +17,18 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-
   final FirebaseAuth auth = FirebaseAuth.instance;
   String? userName = '';
 
-
-  void setName()async{
-    var user=await auth.currentUser;
+  void setName() async {
+    var user = await auth.currentUser;
     setState(() {
-      userName=user!.displayName;
+      userName = user!.displayName;
     });
   }
 
   @override
-  void initState(){
+  void initState() {
     setName();
     super.initState();
   }
@@ -52,14 +50,11 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     final Uri sidessh = Uri.parse('https://github.com/sidesshmore');
     final Uri shakthi = Uri.parse('https://github.com/SHAKTHI-VEL');
-    final Uri arsh = Uri.parse('https://github.com/Arsh1333');
-    final Uri shivraj = Uri.parse('https://github.com/shivraj-murali');
-
     double height = MediaQuery.sizeOf(context).height;
     double width = MediaQuery.sizeOf(context).width;
     return Scaffold(
       appBar: AppBar(
-          automaticallyImplyLeading: false,
+        automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.black,
@@ -69,7 +64,7 @@ class _ProfilePageState extends State<ProfilePage> {
       body: ListView(
         padding: const EdgeInsets.all(12),
         children: [
-           Column(
+          Column(
             children: [
               const CircleAvatar(
                 radius: 50,
@@ -95,10 +90,12 @@ class _ProfilePageState extends State<ProfilePage> {
             return Padding(
               padding: const EdgeInsets.only(bottom: 5),
               child: InkWell(
-                onTap: ()async{
-                  final SharedPreferences prefs = await SharedPreferences.getInstance();
+                onTap: () async {
+                  final SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
                   prefs.remove('uid');
-                  Navigator.pushNamedAndRemoveUntil(context, 'login', (route) => false);
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, 'login', (route) => false);
                 },
                 child: Card(
                   elevation: 4,
@@ -165,49 +162,6 @@ class _ProfilePageState extends State<ProfilePage> {
                           ),
                           title: Text(
                             'Shakthivel',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white),
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: InkWell(
-                        onTap: () {
-                          launchUrl(shivraj);
-                        },
-                        child: const ListTile(
-                          leading: Icon(
-                            SimpleIcons.github,
-                            color: Colors.white,
-                          ),
-                          title: Text(
-                            'Shivraj',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: InkWell(
-                        onTap: () {
-                          launchUrl(arsh);
-                        },
-                        child: const ListTile(
-                          leading: Icon(
-                            SimpleIcons.github,
-                            color: Colors.white,
-                          ),
-                          title: Text(
-                            'Arsh',
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 color: Colors.white),
