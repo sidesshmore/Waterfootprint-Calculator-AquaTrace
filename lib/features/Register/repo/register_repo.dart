@@ -8,6 +8,7 @@ class RegisterRepo{
     try {
       UserCredential credential=await auth.createUserWithEmailAndPassword(email: email, password: password);
       await credential.user?.updateDisplayName(name);
+      print(credential.toString());
       return credential.user;
       
     } catch (e) {

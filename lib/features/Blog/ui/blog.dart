@@ -10,23 +10,25 @@ class BlogPage extends StatelessWidget {
   Widget build(BuildContext context) {
     double height = MediaQuery.sizeOf(context).height;
     double width = MediaQuery.sizeOf(context).width;
-    return Scaffold(
-      body: ListView.separated(
-        itemBuilder: (context, index) {
-          final post = blogPosts[index];
-          return BlogCard(
-            postTitle: post.postTitle,
-            thumbnailContent: post.thumbnailContent,
-            postContent: post.postContent,
-            imageUrl: post.imageUrl,
-          );
-        },
-        separatorBuilder: (context, index) {
-          return SizedBox(
-            height: height * 0.01,
-          );
-        },
-        itemCount: blogPosts.length,
+    return SafeArea(
+      child: Scaffold(
+        body: ListView.separated(
+          itemBuilder: (context, index) {
+            final post = blogPosts[index];
+            return BlogCard(
+              postTitle: post.postTitle,
+              thumbnailContent: post.thumbnailContent,
+              postContent: post.postContent,
+              imageUrl: post.imageUrl,
+            );
+          },
+          separatorBuilder: (context, index) {
+            return SizedBox(
+              height: height * 0.01,
+            );
+          },
+          itemCount: blogPosts.length,
+        ),
       ),
     );
   }
