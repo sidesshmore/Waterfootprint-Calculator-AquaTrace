@@ -36,7 +36,8 @@ class BlogCard extends StatelessWidget {
         margin: EdgeInsets.all(7),
         shadowColor: Colors.grey,
         child: Container(
-          height: height * 0.39,
+          padding: EdgeInsets.all(5),
+          height: height * 0.40,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
           ),
