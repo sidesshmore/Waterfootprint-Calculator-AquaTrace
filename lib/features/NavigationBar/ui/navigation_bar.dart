@@ -58,7 +58,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
   @override
   void initState() {
     analytics.setAnalyticsCollectionEnabled(true);
-   
+
     super.initState();
   }
 
@@ -95,11 +95,11 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
               },
               onTap: () {
                 setState(() {
-                   WidgetsBinding.instance.addPostFrameCallback(
-      (_) => ShowCaseWidget.of(context).startShowCase([
-        keyOne,
-      ]),
-    );
+                  WidgetsBinding.instance.addPostFrameCallback(
+                    (_) => ShowCaseWidget.of(context).startShowCase([
+                      keyOne,
+                    ]),
+                  );
                   _selectedIndex = 2;
                 });
               },

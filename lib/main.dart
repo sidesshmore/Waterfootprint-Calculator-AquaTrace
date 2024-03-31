@@ -23,24 +23,23 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-    OneSignal.Debug.setLogLevel(OSLogLevel.verbose);
+  OneSignal.Debug.setLogLevel(OSLogLevel.verbose);
 
-OneSignal.initialize("25dc09a3-67df-410c-9249-e21966c9d262");
+  OneSignal.initialize("25dc09a3-67df-410c-9249-e21966c9d262");
 
-
-OneSignal.Notifications.requestPermission(true);
-   final SharedPreferences prefs = await SharedPreferences.getInstance();
-  final uid=prefs.getString('uid');
+  OneSignal.Notifications.requestPermission(true);
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  final uid = prefs.getString('uid');
   runApp(MaterialApp(
     theme: ThemeData(scaffoldBackgroundColor: Colors.white),
     // theme: ThemeData.dark(),
     debugShowCheckedModeBanner: false,
-    
-    initialRoute: uid==null?'login':'aqua_trace',
+
+    initialRoute: uid == null ? 'login' : 'aqua_trace',
     routes: {
       'login': (context) => const Login(),
       'register': (context) => const Register(),
-      'forgot_password':(context)=>const ForgotPassWord(),
+      'forgot_password': (context) => const ForgotPassWord(),
       'success': (context) => const Success(),
       'errors': (context) => const ErrorScreen(),
       'profile': (context) => const ProfilePage(),
