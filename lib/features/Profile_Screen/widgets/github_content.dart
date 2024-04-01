@@ -10,6 +10,8 @@ class GithubCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final Uri sidessh = Uri.parse('https://github.com/sidesshmore');
     final Uri shakthi = Uri.parse('https://github.com/SHAKTHI-VEL');
+    final Uri shivraj = Uri.parse('https://github.com/shivraj-murali');
+    final Uri arsh = Uri.parse('https://github.com/Arsh1333');
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Container(
@@ -63,6 +65,47 @@ class GithubCard extends StatelessWidget {
                     ),
                     title: Text(
                       'Shakthivel',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600, color: Colors.white),
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    launchUrl(arsh);
+                  },
+                  child: const ListTile(
+                    leading: Icon(
+                      SimpleIcons.github,
+                      color: Colors.white,
+                    ),
+                    title: Text(
+                      'Arsh',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600, color: Colors.white),
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    launchUrl(shivraj);
+                  },
+                  child: const ListTile(
+                    leading: Icon(
+                      SimpleIcons.github,
+                      color: Colors.white,
+                    ),
+                    title: Text(
+                      'Shivraj',
                       style: TextStyle(
                           fontWeight: FontWeight.w600, color: Colors.white),
                     ),
