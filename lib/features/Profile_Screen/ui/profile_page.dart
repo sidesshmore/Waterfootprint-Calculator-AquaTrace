@@ -23,6 +23,7 @@ class _ProfilePageState extends State<ProfilePage> {
   void setName() async {
     var user = await auth.currentUser;
     setState(() {
+      selectedImage=user!.photoURL==null?const AssetImage('assets/profile_avatar/Drop1.png'):AssetImage(user.photoURL.toString());
       userName = user!.displayName;
     });
   }
@@ -30,7 +31,6 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   void initState() {
     setName();
-    selectedImage = AssetImage('assets/profile_avatar/Drop1.png');
     super.initState();
   }
 
@@ -62,10 +62,12 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Widget _buildImageOption(String imagePath) {
     return InkWell(
-      onTap: () {
+      onTap: () async{
         setState(() {
-          selectedImage = AssetImage(imagePath);
+          selectedImage = AssetImage(imagePath.toString());
         });
+        var user =  auth.currentUser;
+          await user!.updatePhotoURL(imagePath.toString());
         Navigator.of(context).pop();
       },
       child: Padding(
