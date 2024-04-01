@@ -74,6 +74,5 @@ class GithubCard extends StatelessWidget {
         ],
       ),
     );
-    ;
   }
 }
