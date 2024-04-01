@@ -8,6 +8,7 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:showcaseview/showcaseview.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomNavigationBar extends StatefulWidget {
   const CustomNavigationBar({super.key});
@@ -75,15 +76,15 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
         type: BottomNavigationBarType.fixed,
         items: <BottomNavigationBarItem>[
           const BottomNavigationBarItem(
-            icon: Icon(
-              CupertinoIcons.share,
+            icon: FaIcon(
+              FontAwesomeIcons.medal,
               size: 25,
             ),
             label: '',
           ),
           const BottomNavigationBarItem(
             icon: Icon(
-              CupertinoIcons.lightbulb_fill,
+              CupertinoIcons.chart_bar_fill,
               size: 25,
             ),
             label: '',

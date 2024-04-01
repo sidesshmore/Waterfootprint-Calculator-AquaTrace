@@ -60,6 +60,89 @@ class _ProfilePageState extends State<ProfilePage> {
         foregroundColor: Colors.black,
         title: const Text('Profile'),
         centerTitle: true,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 10.0),
+            child: InkWell(
+              onTap: () {
+                showModalBottomSheet(
+                    context: context,
+                    builder: (ctx) {
+                      return Container(
+                        height: height * 0.44,
+                        decoration: BoxDecoration(
+                            color: Colors.black,
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(10),
+                                topRight: Radius.circular(10))),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Lottie.asset("assets/eKrpqJAJmP.json",
+                                height: height * 0.25, fit: BoxFit.fill),
+                            Text(
+                              'Developed by Team Bit Busters❤️',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: width * 0.05,
+                                  color: Colors.white),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Expanded(
+                                  child: InkWell(
+                                    onTap: () {
+                                      launchUrl(sidessh);
+                                    },
+                                    child: const ListTile(
+                                      leading: Icon(
+                                        SimpleIcons.github,
+                                        color: Colors.white,
+                                      ),
+                                      title: Text(
+                                        'Sidessh',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: InkWell(
+                                    onTap: () {
+                                      launchUrl(shakthi);
+                                    },
+                                    child: const ListTile(
+                                      leading: Icon(
+                                        SimpleIcons.github,
+                                        color: Colors.white,
+                                      ),
+                                      title: Text(
+                                        'Shakthivel',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white),
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                      );
+                    });
+              },
+              child: Icon(
+                SimpleIcons.github,
+                color: Colors.black,
+                size: 32,
+              ),
+            ),
+          ),
+        ],
       ),
       body: ListView(
         padding: const EdgeInsets.all(12),
@@ -112,68 +195,6 @@ class _ProfilePageState extends State<ProfilePage> {
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.001,
           ),
-          Container(
-            height: height * 0.44,
-            decoration: BoxDecoration(
-                color: Colors.black, borderRadius: BorderRadius.circular(20)),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Lottie.asset("assets/eKrpqJAJmP.json",
-                    height: height * 0.25, fit: BoxFit.fill),
-                Text(
-                  'Developed by Team Bit Busters❤️',
-                  style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: width * 0.05,
-                      color: Colors.white),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: InkWell(
-                        onTap: () {
-                          launchUrl(sidessh);
-                        },
-                        child: const ListTile(
-                          leading: Icon(
-                            SimpleIcons.github,
-                            color: Colors.white,
-                          ),
-                          title: Text(
-                            'Sidessh',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: InkWell(
-                        onTap: () {
-                          launchUrl(shakthi);
-                        },
-                        child: const ListTile(
-                          leading: Icon(
-                            SimpleIcons.github,
-                            color: Colors.white,
-                          ),
-                          title: Text(
-                            'Shakthivel',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white),
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ],
-            ),
-          )
         ],
       ),
     );
