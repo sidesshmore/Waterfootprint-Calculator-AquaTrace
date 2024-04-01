@@ -31,11 +31,12 @@ class _UserLeadRowState extends State<UserLeadRow> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              width: width*0.07,
+              width: width * 0.07,
               alignment: Alignment.center,
               child: Text(
                 widget.userRank,
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
               ),
             ),
             SizedBox(
@@ -55,7 +56,8 @@ class _UserLeadRowState extends State<UserLeadRow> {
               ),
               Text(
                 widget.userName,
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
               ),
             ],
           ),
@@ -71,7 +73,7 @@ class _UserLeadRowState extends State<UserLeadRow> {
             ),
             Text(
               widget.userXP,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ],
         ),

@@ -30,7 +30,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   void initState() {
     setName();
-    selectedImage = AssetImage('assets/profile_avatar/Drop1.png');
+    selectedImage = const AssetImage('assets/profile_avatar/Drop1.png');
     super.initState();
   }
 

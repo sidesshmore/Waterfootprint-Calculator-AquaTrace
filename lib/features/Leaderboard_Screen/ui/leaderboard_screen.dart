@@ -34,7 +34,7 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
             SizedBox(
               height: height * 0.05,
             ),
-            LeaderBoards(),
+            const LeaderBoards(),
           ],
         ),
       ),
