@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:aqua_trace/features/Profile_Screen/widgets/github_content.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,7 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   final FirebaseAuth auth = FirebaseAuth.instance;
   String? userName = '';
+  AssetImage? selectedImage;
 
   void setName() async {
     var user = await auth.currentUser;
@@ -30,28 +32,61 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   void initState() {
     setName();
+    selectedImage = AssetImage('assets/profile_avatar/Drop1.png');
     super.initState();
   }
-  // void getUsername()async{
-  //   final SharedPreferences prefs = await SharedPreferences.getInstance();
-  //  String? name= await prefs.getString('uid');
-  //   setState(() {
-  //     userName=name;
-  //   });
-  // }
 
-  // @override
-  // void initState(){
-  //   // getUsername();
-  //   super.initState();
-  // }
+  Future<void> _showImageSelectionDialog() async {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Choose Profile Image"),
+          content: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                _buildImageOption('assets/profile_avatar/Drop1.png'),
+                _buildImageOption('assets/profile_avatar/Drop2.png'),
+                _buildImageOption('assets/profile_avatar/Drop3.png'),
+                _buildImageOption('assets/profile_avatar/Drop4.png'),
+                _buildImageOption('assets/profile_avatar/Drop5.png'),
+                _buildImageOption('assets/profile_avatar/Drop6.png'),
+                _buildImageOption('assets/profile_avatar/Drop7.png'),
+                _buildImageOption('assets/profile_avatar/Drop8.png'),
+                _buildImageOption('assets/profile_avatar/Drop9.png'),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildImageOption(String imagePath) {
+    return InkWell(
+      onTap: () {
+        setState(() {
+          selectedImage = AssetImage(imagePath);
+        });
+        Navigator.of(context).pop();
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Image.asset(
+          imagePath,
+          height: 50,
+          width: 50,
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     final Uri sidessh = Uri.parse('https://github.com/sidesshmore');
     final Uri shakthi = Uri.parse('https://github.com/SHAKTHI-VEL');
-    double height = MediaQuery.sizeOf(context).height;
-    double width = MediaQuery.sizeOf(context).width;
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -68,74 +103,10 @@ class _ProfilePageState extends State<ProfilePage> {
                 showModalBottomSheet(
                     context: context,
                     builder: (ctx) {
-                      return Container(
-                        height: height * 0.44,
-                        decoration: BoxDecoration(
-                            color: Colors.black,
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(10),
-                                topRight: Radius.circular(10))),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Lottie.asset("assets/eKrpqJAJmP.json",
-                                height: height * 0.25, fit: BoxFit.fill),
-                            Text(
-                              'Developed by Team Bit Busters❤️',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: width * 0.05,
-                                  color: Colors.white),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Expanded(
-                                  child: InkWell(
-                                    onTap: () {
-                                      launchUrl(sidessh);
-                                    },
-                                    child: const ListTile(
-                                      leading: Icon(
-                                        SimpleIcons.github,
-                                        color: Colors.white,
-                                      ),
-                                      title: Text(
-                                        'Sidessh',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            color: Colors.white),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: InkWell(
-                                    onTap: () {
-                                      launchUrl(shakthi);
-                                    },
-                                    child: const ListTile(
-                                      leading: Icon(
-                                        SimpleIcons.github,
-                                        color: Colors.white,
-                                      ),
-                                      title: Text(
-                                        'Shakthivel',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            color: Colors.white),
-                                      ),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ],
-                        ),
-                      );
+                      return GithubCard();
                     });
               },
-              child: Icon(
+              child: const Icon(
                 SimpleIcons.github,
                 color: Colors.black,
                 size: 32,
@@ -149,9 +120,13 @@ class _ProfilePageState extends State<ProfilePage> {
         children: [
           Column(
             children: [
-              const CircleAvatar(
-                radius: 50,
-                backgroundImage: AssetImage('assets/AquaSoldier.png'),
+              InkWell(
+                onTap: _showImageSelectionDialog,
+                child: CircleAvatar(
+                  radius: 60,
+                  backgroundImage: selectedImage,
+                  backgroundColor: Colors.transparent,
+                ),
               ),
               const SizedBox(
                 height: 10,

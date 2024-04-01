@@ -5,7 +5,8 @@ import 'package:aqua_trace/TestWidgets/successful.dart';
 import 'package:aqua_trace/features/Forgot_Password/forgotPassword.dart';
 import 'package:aqua_trace/features/Login/ui/login.dart';
 import 'package:aqua_trace/features/NavigationBar/ui/navigation_bar.dart';
-import 'package:aqua_trace/features/Profile_Screen/ui/profile_page.dart';
+
+import 'package:aqua_trace/features/Profile_Screen/ui/side.dart';
 import 'package:aqua_trace/features/Register/ui/register.dart';
 import 'package:aqua_trace/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
