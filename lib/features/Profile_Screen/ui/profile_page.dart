@@ -30,7 +30,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   void initState() {
     setName();
-    selectedImage = const AssetImage('assets/profile_avatar/Drop1.png');
+    selectedImage = AssetImage('assets/profile_avatar/Drop1.png');
     super.initState();
   }
 
@@ -118,13 +118,24 @@ class _ProfilePageState extends State<ProfilePage> {
         children: [
           Column(
             children: [
-              InkWell(
-                onTap: _showImageSelectionDialog,
-                child: CircleAvatar(
-                  radius: 60,
-                  backgroundImage: selectedImage,
-                  backgroundColor: Colors.transparent,
-                ),
+              Stack(
+                alignment: Alignment.bottomRight,
+                children: [
+                  InkWell(
+                    onTap: _showImageSelectionDialog,
+                    child: CircleAvatar(
+                      radius: 60,
+                      backgroundImage: selectedImage,
+                      backgroundColor: Colors.transparent,
+                    ),
+                  ),
+                  IconButton(
+                    padding: EdgeInsets.only(top: 20, left: 5),
+                    onPressed: _showImageSelectionDialog,
+                    icon: Icon(Icons.edit),
+                    iconSize: 25,
+                  )
+                ],
               ),
               const SizedBox(
                 height: 10,
