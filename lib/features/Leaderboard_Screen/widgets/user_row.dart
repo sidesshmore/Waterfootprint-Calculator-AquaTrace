@@ -2,6 +2,7 @@ import 'package:aqua_trace/features/Leaderboard_Screen/models/user_lead_list.dar
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'dart:math';
 
 class UserLeadRow extends StatefulWidget {
   const UserLeadRow(
@@ -19,6 +20,17 @@ class UserLeadRow extends StatefulWidget {
 }
 
 class _UserLeadRowState extends State<UserLeadRow> {
+  final List<String> avatarPaths = [
+    'assets/leaderboard_avatar/avatar1.png',
+    'assets/leaderboard_avatar/avatar2.png',
+    'assets/leaderboard_avatar/avatar3.png',
+    'assets/leaderboard_avatar/avatar4.png',
+    'assets/leaderboard_avatar/avatar5.png',
+    'assets/leaderboard_avatar/avatar6.png',
+  ];
+
+  int randomIndex = Random().nextInt(6);
+
   @override
   Widget build(BuildContext context) {
     userList;
@@ -47,8 +59,8 @@ class _UserLeadRowState extends State<UserLeadRow> {
         Expanded(
           child: Row(
             children: [
-              const CircleAvatar(
-                foregroundImage: AssetImage('assets/avatar.png'),
+              CircleAvatar(
+                foregroundImage: AssetImage(avatarPaths[randomIndex]),
                 foregroundColor: Colors.white,
               ),
               SizedBox(
@@ -64,7 +76,7 @@ class _UserLeadRowState extends State<UserLeadRow> {
         ),
         Row(
           children: [
-            const CircleAvatar(
+            CircleAvatar(
               foregroundImage: AssetImage('assets/medal.png'),
               backgroundColor: Colors.white,
             ),

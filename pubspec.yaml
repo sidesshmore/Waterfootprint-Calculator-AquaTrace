@@ -88,6 +88,7 @@ flutter:
   assets:
     - assets/
     - assets/profile_avatar/
+    - assets/leaderboard_avatar/
     - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
