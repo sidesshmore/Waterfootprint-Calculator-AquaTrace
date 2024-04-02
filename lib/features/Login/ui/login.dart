@@ -1,6 +1,13 @@
+import 'dart:developer';
+
 import 'package:aqua_trace/features/Login/bloc/login_bloc.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sign_in_button/sign_in_button.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -12,8 +19,36 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final _emailcontroller = TextEditingController();
   final _passwordcontroller = TextEditingController();
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final LoginBloc loginbloc = LoginBloc();
   bool _passwordVisible = true;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  void _handleGoogleLogin() async {
+    final GoogleSignIn _googleSignIn = GoogleSignIn();
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      if (googleUser != null) {
+        final GoogleSignInAuthentication? googleAuth =
+            await googleUser?.authentication;
+
+        // Create a new credential
+        final credential = GoogleAuthProvider.credential(
+          accessToken: googleAuth?.accessToken,
+          idToken: googleAuth?.idToken,
+        );
+
+        UserCredential credentials =
+            await FirebaseAuth.instance.signInWithCredential(credential);
+            final SharedPreferences prefs = await SharedPreferences.getInstance();
+            await prefs.setString('uid',credentials.user!.uid);
+            
+            Navigator.pushNamed(context, 'aqua_trace');
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
 
   @override
   void initState() {
@@ -139,7 +174,8 @@ class _LoginState extends State<Login> {
                               children: [
                                 TextButton(
                                   onPressed: () {
-                                    Navigator.pushNamed(context, 'forgot_password');
+                                    Navigator.pushNamed(
+                                        context, 'forgot_password');
                                   },
                                   child: const Text(
                                     'Forgot Password?',
@@ -180,9 +216,12 @@ class _LoginState extends State<Login> {
                   const SizedBox(
                     height: 30,
                   ),
-                  Row(
+                  Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      SignInButton(Buttons.google,
+                          text: 'Login with Google',
+                          onPressed: _handleGoogleLogin),
                       TextButton(
                         onPressed: () {
                           loginbloc.add(NewHereClicked());

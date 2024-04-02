@@ -12,7 +12,20 @@
           "package_name": "com.sidesshmore.aquatrace"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "925804687441-lnbi7dq8po7psb0p20rg8ffguub77n9t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sidesshmore.aquatrace",
+            "certificate_hash": "9429c57828d975f6d7f4517451f5071a667cc8de"
+          }
+        },
+        {
+          "client_id": "925804687441-je0p294q157e28bkk70r43ia0ib1215p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDRHl7MWqhECRDRII8tRG-Tfo_FHkS93WI"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "925804687441-je0p294q157e28bkk70r43ia0ib1215p.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "925804687441-71upc6g49a11uueoet4ve5shmmvbsv5l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.aquaTrace.RunnerTests"
+              }
+            }
+          ]
         }
       }
     }

@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_icons/simple_icons.dart';
 
@@ -162,7 +163,9 @@ class _ProfilePageState extends State<ProfilePage> {
                 onTap: () async {
                   final SharedPreferences prefs =
                       await SharedPreferences.getInstance();
+
                   prefs.remove('uid');
+                  GoogleSignIn().signOut(); 
                   Navigator.pushNamedAndRemoveUntil(
                       context, 'login', (route) => false);
                 },
