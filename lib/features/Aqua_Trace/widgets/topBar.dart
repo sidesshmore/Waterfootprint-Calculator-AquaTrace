@@ -73,16 +73,18 @@ class _TopBarState extends State<TopBar> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          ElevatedButton.icon(
-            onPressed: () {},
-            icon: Icon(
-              Icons.bolt,
-              color: Color.fromARGB(255, 24, 94, 247),
-              size: screenWidth / 17,
-            ),
-            label: Text(
-              '23',
-              style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+          Container(
+            child: Row(
+              children: [
+                Image.asset(
+                  'assets/medal.png',
+                  height: 33,
+                ),
+                const Text(
+                  '23',
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
+                )
+              ],
             ),
           ),
           ElevatedButton(
