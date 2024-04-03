@@ -76,63 +76,71 @@ class _LineChartWidgetState extends State<LineChartWidget> {
       );
   @override
   Widget build(BuildContext context) {
-    return LineChart(
-      LineChartData(
-        titlesData: FlTitlesData(
-          topTitles: const AxisTitles(
-            sideTitles: SideTitles(showTitles: false),
-          ),
-          leftTitles: const AxisTitles(
-            sideTitles:
-                SideTitles(reservedSize: 40, showTitles: true, interval: 1000),
-          ),
-          rightTitles: const AxisTitles(
-            sideTitles: SideTitles(showTitles: false),
-          ),
-          bottomTitles: AxisTitles(sideTitles: _bottomTitles),
-        ),
-        backgroundColor: Colors.black,
-        gridData: FlGridData(
-          show: true,
-          getDrawingHorizontalLine: (value) {
-            return const FlLine(
-              color: Color(0xff37434d),
-              strokeWidth: 1,
-            );
-          },
-        ),
-        borderData: FlBorderData(
-          show: true,
-          border: Border.all(color: const Color(0xff37434d), width: 1),
-        ),
-        minX: 0,
-        maxX: 7,
-        minY: 0,
-        maxY: 3800,
-        lineBarsData: [
-          LineChartBarData(
-            spots: [
-              FlSpot(1, weekData[0]),
-              FlSpot(2, weekData[1]),
-              FlSpot(3, weekData[2]),
-              FlSpot(4, weekData[3]),
-              FlSpot(5, weekData[4]),
-              FlSpot(6, weekData[5]),
-              FlSpot(7, weekData[6]),
-            ],
-            isCurved: true,
-            gradient: LinearGradient(colors: gradientColors),
-            barWidth: 3,
-            belowBarData: BarAreaData(
-              gradient: LinearGradient(
-                colors: gradientColors
-                    .map((color) => color.withOpacity(0.3))
-                    .toList(),
+    return FutureBuilder(
+        future: getList(),
+        builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
+          if (weekData.isEmpty) {
+            return const CircularProgressIndicator();
+          } else {
+            return LineChart(
+              LineChartData(
+                titlesData: FlTitlesData(
+                  topTitles: const AxisTitles(
+                    sideTitles: SideTitles(showTitles: false),
+                  ),
+                  leftTitles: const AxisTitles(
+                    sideTitles: SideTitles(
+                        reservedSize: 40, showTitles: true, interval: 1000),
+                  ),
+                  rightTitles: const AxisTitles(
+                    sideTitles: SideTitles(showTitles: false),
+                  ),
+                  bottomTitles: AxisTitles(sideTitles: _bottomTitles),
+                ),
+                backgroundColor: Colors.black,
+                gridData: FlGridData(
+                  show: true,
+                  getDrawingHorizontalLine: (value) {
+                    return const FlLine(
+                      color: Color(0xff37434d),
+                      strokeWidth: 1,
+                    );
+                  },
+                ),
+                borderData: FlBorderData(
+                  show: true,
+                  border: Border.all(color: const Color(0xff37434d), width: 1),
+                ),
+                minX: 0,
+                maxX: 7,
+                minY: 0,
+                maxY: 3800,
+                lineBarsData: [
+                  LineChartBarData(
+                    spots: [
+                      FlSpot(1, weekData[0]),
+                      FlSpot(2, weekData[1]),
+                      FlSpot(3, weekData[2]),
+                      FlSpot(4, weekData[3]),
+                      FlSpot(5, weekData[4]),
+                      FlSpot(6, weekData[5]),
+                      FlSpot(7, weekData[6]),
+                    ],
+                    isCurved: true,
+                    gradient: LinearGradient(colors: gradientColors),
+                    barWidth: 3,
+                    belowBarData: BarAreaData(
+                      gradient: LinearGradient(
+                        colors: gradientColors
+                            .map((color) => color.withOpacity(0.3))
+                            .toList(),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ),
-        ],
-      ),
-    );
+            );
+          }
+        });
   }
 }
