@@ -104,7 +104,7 @@ class _LoginState extends State<Login> {
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                        left: 20, right: 20, top: screenHeight * 0.10),
+                        left: 20, right: 20, top: screenHeight * 0.06),
                     child: Stack(
                       children: [
                         Container(
@@ -112,7 +112,6 @@ class _LoginState extends State<Login> {
                           decoration: BoxDecoration(
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(10)),
-                            // .withOpacity(0.6000000238418579)
                             color: Colors.white.withOpacity(0.65),
                           ),
                         ),
