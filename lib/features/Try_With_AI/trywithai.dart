@@ -155,6 +155,8 @@ class _TryWithAIState extends State<TryWithAI> {
                 Expanded(
                   child: Container(
                     height: 48,
+                    width:50,
+
                     child: DropdownButton(
                         style:
                             const TextStyle(fontSize: 17, color: Colors.black),
@@ -179,10 +181,10 @@ class _TryWithAIState extends State<TryWithAI> {
                         }),
                   ),
                 ),
-                const SizedBox(
+                const SizedBox(width: 60,),const SizedBox(
                   width: 6,
                 ),
-                const Spacer(),
+                
                 ElevatedButton(
                   onPressed: () async {
                     final SharedPreferences prefs =

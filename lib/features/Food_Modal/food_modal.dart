@@ -123,6 +123,7 @@ class _FoodModalState extends State<FoodModal> {
                         Expanded(
                           child: Container(
                             height: 48,
+                            width:50,
                             child: DropdownButton(
                                 style: const TextStyle(
                                     fontSize: 18, color: Colors.black),
@@ -147,7 +148,8 @@ class _FoodModalState extends State<FoodModal> {
                                 }),
                           ),
                         ),
-                        const Spacer(),
+                        // const Spacer(),
+                        const SizedBox(width: 60,),
                         ElevatedButton(
                           onPressed: () async {
                             final SharedPreferences prefs =

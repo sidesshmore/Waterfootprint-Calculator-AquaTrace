@@ -1,2 +1,2 @@
-enum Category{grams,katori,cup,bowl}
+enum Category{grams,katori,cup,bowl,serving}
 
