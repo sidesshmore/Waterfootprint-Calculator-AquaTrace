@@ -25,6 +25,7 @@ class _LoginState extends State<Login> {
   bool _passwordVisible = true;
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+
   void _handleGoogleLogin() async {
     final GoogleSignIn _googleSignIn = GoogleSignIn();
     try {
@@ -41,10 +42,10 @@ class _LoginState extends State<Login> {
 
         UserCredential credentials =
             await FirebaseAuth.instance.signInWithCredential(credential);
-        final SharedPreferences prefs = await SharedPreferences.getInstance();
-        await prefs.setString('uid', credentials.user!.uid);
+            final SharedPreferences prefs = await SharedPreferences.getInstance();
+            await prefs.setString('uid',credentials.user!.uid);
 
-        Navigator.pushNamed(context, 'aqua_trace');
+            Navigator.pushNamed(context, 'aqua_trace');
       }
     } catch (e) {
       log(e.toString());
@@ -227,7 +228,7 @@ class _LoginState extends State<Login> {
                           foregroundColor: Colors.black,
                         ),
                         onPressed: () {
-                          _handleGoogleLogin;
+                          _handleGoogleLogin();
                         },
                         child: const Padding(
                           padding: EdgeInsets.fromLTRB(0, 8, 0, 8),

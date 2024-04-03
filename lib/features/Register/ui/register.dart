@@ -220,7 +220,7 @@ class _RegisterState extends State<Register> {
                                 foregroundColor: Colors.black,
                               ),
                               onPressed: () {
-                                _handleGoogleLogin;
+                                _handleGoogleLogin();
                               },
                               child: const Padding(
                                 padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
