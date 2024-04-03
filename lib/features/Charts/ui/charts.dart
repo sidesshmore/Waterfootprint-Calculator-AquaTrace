@@ -1,8 +1,10 @@
 import 'package:aqua_trace/features/Charts/ui/chat_interface.dart';
+import 'package:aqua_trace/features/Charts/ui/line_chart.dart';
 import 'package:aqua_trace/features/Charts/ui/water_card.dart';
 import 'package:aqua_trace/models/foodCardData.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
+import 'package:fl_chart/fl_chart.dart';
 
 class ChartsPage extends StatefulWidget {
   const ChartsPage({super.key});
@@ -15,6 +17,7 @@ class _ChartsPageState extends State<ChartsPage> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.sizeOf(context).height;
+    double width = MediaQuery.sizeOf(context).width;
 
     foodList;
     return Scaffold(
@@ -31,22 +34,11 @@ class _ChartsPageState extends State<ChartsPage> {
           ),
           Center(
             child: Padding(
-              padding: const EdgeInsets.all(30.0),
+              padding: const EdgeInsets.all(20.0),
               child: SizedBox(
-                height: height * 0.47,
-                child: Swiper(
-                  duration: 1200,
-                  itemCount: foodList.length,
-                  itemBuilder: (context, index) {
-                    return WaterCard(
-                      foodURL: foodList[index].foodURL,
-                      foodName: foodList[index].foodName,
-                      blueWFP: foodList[index].blueWFP,
-                      greenWFP: foodList[index].greenWFP,
-                      greyWFP: foodList[index].greyWFP,
-                    );
-                  },
-                ),
+                height: height * 0.50,
+                // width: width,
+                child: LineChartWidget(),
               ),
             ),
           ),
@@ -54,11 +46,6 @@ class _ChartsPageState extends State<ChartsPage> {
       ),
       floatingActionButton: FloatingActionButton(
         shape: const CircleBorder(),
-        child: Icon(
-          Icons.smart_toy,
-          color: Colors.white,
-          size: height * 0.033,
-        ),
         backgroundColor: Colors.blue.shade600,
         onPressed: () {
           showModalBottomSheet(
@@ -68,6 +55,11 @@ class _ChartsPageState extends State<ChartsPage> {
                 return ChatInterface();
               });
         },
+        child: Icon(
+          Icons.smart_toy,
+          color: Colors.white,
+          size: height * 0.033,
+        ),
       ),
     );
   }
