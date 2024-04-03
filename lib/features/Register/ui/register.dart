@@ -209,7 +209,7 @@ class _RegisterState extends State<Register> {
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             ElevatedButton(
