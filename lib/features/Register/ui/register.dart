@@ -101,7 +101,7 @@ class _RegisterState extends State<Register> {
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                        left: 20, right: 20, top: screenHeight * 0.08),
+                        left: 20, right: 20, top: screenHeight * 0.03),
                     child: Stack(
                       children: [
                         Container(
@@ -210,7 +210,7 @@ class _RegisterState extends State<Register> {
                               ],
                             ),
                             SizedBox(
-                              height: 5,
+                              height: 10,
                             ),
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(
@@ -237,7 +237,7 @@ class _RegisterState extends State<Register> {
                                       padding:
                                           EdgeInsets.only(left: 24, right: 8),
                                       child: Text(
-                                        'Sign Up with Google',
+                                        'Continue with Google',
                                         style: TextStyle(
                                           fontSize: 20,
                                           color: Colors.black54,
