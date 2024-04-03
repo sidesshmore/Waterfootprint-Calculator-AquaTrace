@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_in_button/sign_in_button.dart';
@@ -40,10 +41,10 @@ class _LoginState extends State<Login> {
 
         UserCredential credentials =
             await FirebaseAuth.instance.signInWithCredential(credential);
-            final SharedPreferences prefs = await SharedPreferences.getInstance();
-            await prefs.setString('uid',credentials.user!.uid);
-            
-            Navigator.pushNamed(context, 'aqua_trace');
+        final SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setString('uid', credentials.user!.uid);
+
+        Navigator.pushNamed(context, 'aqua_trace');
       }
     } catch (e) {
       log(e.toString());
@@ -219,9 +220,42 @@ class _LoginState extends State<Login> {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SignInButton(Buttons.google,
-                          text: 'Login with Google',
-                          onPressed: _handleGoogleLogin),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: BeveledRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          backgroundColor: Colors.white,
+                          foregroundColor: Colors.black,
+                        ),
+                        onPressed: () {
+                          _handleGoogleLogin;
+                        },
+                        child: const Padding(
+                          padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image(
+                                image: AssetImage("assets/google.png"),
+                                height: 42,
+                                width: 42,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(left: 24, right: 8),
+                                child: Text(
+                                  'Sign in with Google',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.black54,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                       TextButton(
                         onPressed: () {
                           loginbloc.add(NewHereClicked());
