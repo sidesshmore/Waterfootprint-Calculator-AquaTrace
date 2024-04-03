@@ -1,6 +1,11 @@
+import 'dart:developer';
+
+import 'package:dio/dio.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LineChartWidget extends StatefulWidget {
   const LineChartWidget({super.key});
@@ -14,6 +19,28 @@ class _LineChartWidgetState extends State<LineChartWidget> {
     const Color(0xff23b6e6),
     const Color(0xff02d39a),
   ];
+
+  List weekData = [];
+
+  getList() async {
+    final dio = Dio();
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final uid = prefs.getString('uid');
+    final response = await dio.get('${dotenv.env["URL"]}/week/${uid}');
+    if (response.statusCode == 200) {
+      final data = response.data['weekData'];
+      for (int i = 0; i < 7; i++) {
+        weekData.add(data[i]);
+      }
+      log(weekData.toString());
+    }
+  }
+
+  @override
+  void initState() {
+    getList();
+    super.initState();
+  }
 
   SideTitles get _bottomTitles => SideTitles(
         showTitles: true,
@@ -85,13 +112,13 @@ class _LineChartWidgetState extends State<LineChartWidget> {
         lineBarsData: [
           LineChartBarData(
             spots: [
-              const FlSpot(1, 1400),
-              const FlSpot(2, 1900),
-              const FlSpot(3, 2400),
-              const FlSpot(4, 3300),
-              const FlSpot(5, 2800),
-              const FlSpot(6, 2100),
-              const FlSpot(7, 1950),
+              FlSpot(1, weekData[0]),
+              FlSpot(2, weekData[1]),
+              FlSpot(3, weekData[2]),
+              FlSpot(4, weekData[3]),
+              FlSpot(5, weekData[4]),
+              FlSpot(6, weekData[5]),
+              FlSpot(7, weekData[6]),
             ],
             isCurved: true,
             gradient: LinearGradient(colors: gradientColors),
