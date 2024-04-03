@@ -1,6 +1,11 @@
+import 'dart:developer';
+
 import 'package:aqua_trace/features/Register/bloc/register_bloc.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -16,6 +21,32 @@ class _RegisterState extends State<Register> {
   final RegisterBloc registerbloc = RegisterBloc();
 
   bool _passwordVisible = true;
+
+  void _handleGoogleLogin() async {
+    final GoogleSignIn _googleSignIn = GoogleSignIn();
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      if (googleUser != null) {
+        final GoogleSignInAuthentication? googleAuth =
+            await googleUser?.authentication;
+
+        // Create a new credential
+        final credential = GoogleAuthProvider.credential(
+          accessToken: googleAuth?.accessToken,
+          idToken: googleAuth?.idToken,
+        );
+
+        UserCredential credentials =
+            await FirebaseAuth.instance.signInWithCredential(credential);
+        final SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setString('uid', credentials.user!.uid);
+
+        Navigator.pushNamed(context, 'aqua_trace');
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
 
   @override
   void initState() {
@@ -177,14 +208,54 @@ class _RegisterState extends State<Register> {
                                   ),
                                 ),
                               ],
-                            )
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                shape: BeveledRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10)),
+                                backgroundColor: Colors.white,
+                                foregroundColor: Colors.black,
+                              ),
+                              onPressed: () {
+                                _handleGoogleLogin;
+                              },
+                              child: const Padding(
+                                padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image(
+                                      image: AssetImage("assets/google.png"),
+                                      height: 42,
+                                      width: 42,
+                                    ),
+                                    Padding(
+                                      padding:
+                                          EdgeInsets.only(left: 24, right: 8),
+                                      child: Text(
+                                        'Sign Up with Google',
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          color: Colors.black54,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ],
                     ),
                   ),
                   const SizedBox(
-                    height: 30,
+                    height: 15,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
