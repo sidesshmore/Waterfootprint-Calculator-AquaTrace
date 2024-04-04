@@ -6,6 +6,7 @@ import 'package:aqua_trace/models/addItem.dart';
 import 'package:aqua_trace/models/list.dart';
 import 'package:aqua_trace/models/servingCategory.dart';
 import 'package:dio/dio.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -24,6 +25,16 @@ class _FoodModalState extends State<FoodModal> {
   final _quantityController = TextEditingController();
   final AddfoodBloc addfoodbloc = AddfoodBloc();
   static List<String> _kOptions = [];
+
+  String? userName = '';
+    final FirebaseAuth auth = FirebaseAuth.instance;
+
+  void setName() async {
+    var user = await auth.currentUser;
+    setState(() {
+      userName = user!.displayName;
+    });
+  }
 
   void getAllFood() async {
     List<String> lists = [];
@@ -51,6 +62,7 @@ class _FoodModalState extends State<FoodModal> {
 
   @override
   void initState() {
+    setName();
     getAllFood();
     super.initState();
   }
@@ -169,7 +181,8 @@ class _FoodModalState extends State<FoodModal> {
                               "uid": prefs.getString('uid'),
                               "item": item.itemName,
                               "measure": category,
-                              "quantity": item.quantity
+                              "quantity": item.quantity,
+                              "name":userName
                             });
 
                             if (response.statusCode == 200) {

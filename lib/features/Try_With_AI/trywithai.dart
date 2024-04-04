@@ -1,8 +1,10 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:aqua_trace/models/addItem.dart';
 import 'package:aqua_trace/models/servingCategory.dart';
 import 'package:dio/dio.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -26,8 +28,19 @@ class _TryWithAIState extends State<TryWithAI> {
   final _itemController = TextEditingController();
   final _quantityController = TextEditingController();
 
+  String? userName = '';
+    final FirebaseAuth auth = FirebaseAuth.instance;
+
+  void setName() async {
+    var user = await auth.currentUser;
+    setState(() {
+      userName = user!.displayName;
+    });
+  }
+
   @override
   void initState() {
+    setName();
     loadmodel();
     super.initState();
   }
@@ -202,9 +215,16 @@ class _TryWithAIState extends State<TryWithAI> {
                           "uid": prefs.getString('uid'),
                           "item": select,
                           "measure": category,
-                          "quantity": item.quantity
+                          "quantity": item.quantity,
+                          "name":userName
                         });
-                        print(response.data);
+                        log({
+                          "uid": prefs.getString('uid'),
+                          "item": select,
+                          "measure": category,
+                          "quantity": item.quantity,
+                          "name":userName
+                        }.toString());
 
                     if (response.statusCode == 200) {
                       Navigator.pushNamedAndRemoveUntil(

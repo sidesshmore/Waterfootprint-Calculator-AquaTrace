@@ -4,8 +4,9 @@ import 'dart:convert';
 class UserLeadList {
   final String uid;
   final String totalxp;
+  final String name;
 
-  UserLeadList({required this.uid, required this.totalxp});
+  UserLeadList({required this.uid, required this.totalxp,required this.name});
 
   
 
@@ -13,6 +14,7 @@ class UserLeadList {
     return <String, dynamic>{
       'uid': uid,
       'totalxp': totalxp,
+      'name':name
     };
   }
 
@@ -20,6 +22,7 @@ class UserLeadList {
     return UserLeadList(
       uid: map['uid'] as String,
       totalxp: map['totalxp'] as String,
+      name:map['name'] as String
     );
   }
 

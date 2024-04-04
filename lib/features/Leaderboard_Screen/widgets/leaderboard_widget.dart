@@ -45,7 +45,7 @@ class _LeaderBoardsState extends State<LeaderBoards> {
             itemBuilder: (context, index) {
               return UserLeadRow(
                 userRank: (index+1).toString(),
-                userName: userList[index].uid,
+                userName: userList[index].name,
                 userXP: userList[index].totalxp,
               );
             },
