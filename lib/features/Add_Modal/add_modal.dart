@@ -10,11 +10,12 @@ class AddModal extends StatefulWidget {
   State<AddModal> createState() => _AddModalState();
 }
 
-class _AddModalState extends State<AddModal> with SingleTickerProviderStateMixin {
- late TabController _tabController;
- @override
+class _AddModalState extends State<AddModal>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+  @override
   void initState() {
-    _tabController =  TabController(length: 3, vsync: this);
+    _tabController = TabController(length: 3, vsync: this);
     super.initState();
   }
 
@@ -26,45 +27,38 @@ class _AddModalState extends State<AddModal> with SingleTickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
-        height: MediaQuery.of(context).size.height*0.7,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            
-            TabBar(
-              automaticIndicatorColorAdjustment: true,
-              unselectedLabelColor: Colors.black,
-              labelColor: Colors.blue,
-              tabs: const[
-                Tab(
-                  text: 'Food Item',
-                ),
-                Tab(
-                  text: 'Activity',
-                ),
-                Tab(
-                  icon: Icon(Icons.camera_alt),
-                )
-              ],
-              controller: _tabController,
-              indicatorSize: TabBarIndicatorSize.label,
-              indicatorColor: Colors.blue,
-            ),
-            Expanded(
-              child: TabBarView(
-                children: [
-                  FoodModal(),
-                  ActivityModal(),
-                  TryWithAI()
-                ],
-                controller: _tabController,
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.86,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          TabBar(
+            automaticIndicatorColorAdjustment: true,
+            unselectedLabelColor: Colors.black,
+            labelColor: Colors.blue,
+            tabs: const [
+              Tab(
+                text: 'Food Item',
               ),
+              Tab(
+                text: 'Activity',
+              ),
+              Tab(
+                icon: Icon(Icons.camera_alt),
+              )
+            ],
+            controller: _tabController,
+            indicatorSize: TabBarIndicatorSize.label,
+            indicatorColor: Colors.blue,
+          ),
+          Expanded(
+            child: TabBarView(
+              children: [FoodModal(), ActivityModal(), TryWithAI()],
+              controller: _tabController,
             ),
-          ],
-        ),
-      
+          ),
+        ],
+      ),
     );
   }
-
 }
