@@ -6,6 +6,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 
 class LineChartWidget extends StatefulWidget {
   const LineChartWidget({super.key});
@@ -22,7 +24,7 @@ class _LineChartWidgetState extends State<LineChartWidget> {
 
   List weekData = [];
 
-  getList() async {
+  Future<String> getList() async {
     final dio = Dio();
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     final uid = prefs.getString('uid');
@@ -30,9 +32,13 @@ class _LineChartWidgetState extends State<LineChartWidget> {
     if (response.statusCode == 200) {
       final data = response.data['weekData'];
       for (int i = 0; i < 7; i++) {
-        weekData.add(data[i]);
+        weekData.add(double.parse(data[i].toString()));
       }
       log(weekData.toString());
+      log(weekData.runtimeType.toString());
+      return "Data Loaded";
+    } else {
+      throw Exception('Failed to load data');
     }
   }
 

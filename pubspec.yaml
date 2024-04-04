@@ -61,6 +61,7 @@ dependencies:
   sign_in_button:
   google_sign_in: 
   fl_chart: ^0.67.0
+  syncfusion_flutter_charts: ^25.1.38
 
 
 
