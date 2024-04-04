@@ -30,8 +30,7 @@ class _FoodModalState extends State<FoodModal> {
     final dio = Dio();
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     final uid = prefs.getString('uid');
-    final response =
-        await dio.get('${dotenv.env["URL"]}/getallfood');
+    final response = await dio.get('${dotenv.env["URL"]}/getallfood');
     if (response.statusCode == 200) {
       final data = response.data["result"];
       List dataList = data;
@@ -58,6 +57,8 @@ class _FoodModalState extends State<FoodModal> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     return BlocConsumer<AddfoodBloc, AddfoodState>(
       bloc: addfoodbloc,
       listener: (context, state) {
@@ -163,14 +164,13 @@ class _FoodModalState extends State<FoodModal> {
                             final category =
                                 item.category.toString().substring(9);
                             final dio = Dio();
-                            final response = await dio.post(
-                                '${dotenv.env["URL"]}/add',
-                                data: {
-                                  "uid": prefs.getString('uid'),
-                                  "item": item.itemName,
-                                  "measure": category,
-                                  "quantity": item.quantity
-                                });
+                            final response = await dio
+                                .post('${dotenv.env["URL"]}/add', data: {
+                              "uid": prefs.getString('uid'),
+                              "item": item.itemName,
+                              "measure": category,
+                              "quantity": item.quantity
+                            });
 
                             if (response.statusCode == 200) {
                               Navigator.pushNamedAndRemoveUntil(

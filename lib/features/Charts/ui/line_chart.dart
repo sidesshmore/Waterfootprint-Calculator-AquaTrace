@@ -6,6 +6,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 
 class LineChartWidget extends StatefulWidget {
   const LineChartWidget({super.key});
@@ -22,7 +24,7 @@ class _LineChartWidgetState extends State<LineChartWidget> {
 
   List weekData = [];
 
-  getList() async {
+  Future<String> getList() async {
     final dio = Dio();
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     final uid = prefs.getString('uid');
@@ -30,9 +32,13 @@ class _LineChartWidgetState extends State<LineChartWidget> {
     if (response.statusCode == 200) {
       final data = response.data['weekData'];
       for (int i = 0; i < 7; i++) {
-        weekData.add(data[i]);
+        weekData.add(double.parse(data[i].toString()));
       }
       log(weekData.toString());
+      log(weekData.runtimeType.toString());
+      return "Data Loaded";
+    } else {
+      throw Exception('Failed to load data');
     }
   }
 
@@ -118,23 +124,19 @@ class _LineChartWidgetState extends State<LineChartWidget> {
                 lineBarsData: [
                   LineChartBarData(
                     spots: [
-                      FlSpot(1, weekData[0]),
-                      FlSpot(2, weekData[1]),
-                      FlSpot(3, weekData[2]),
+                      FlSpot(1, weekData[6]),
+                      FlSpot(2, weekData[5]),
+                      FlSpot(3, weekData[4]),
                       FlSpot(4, weekData[3]),
-                      FlSpot(5, weekData[4]),
-                      FlSpot(6, weekData[5]),
-                      FlSpot(7, weekData[6]),
+                      FlSpot(5, weekData[2]),
+                      FlSpot(6, weekData[1]),
+                      FlSpot(7, weekData[0]),
                     ],
                     isCurved: true,
                     gradient: LinearGradient(colors: gradientColors),
                     barWidth: 3,
                     belowBarData: BarAreaData(
-                      gradient: LinearGradient(
-                        colors: gradientColors
-                            .map((color) => color.withOpacity(0.3))
-                            .toList(),
-                      ),
+                      color: Colors.blueGrey,
                     ),
                   ),
                 ],

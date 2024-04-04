@@ -16,6 +16,8 @@ class TopBar extends StatefulWidget {
 }
 
 class _TopBarState extends State<TopBar> {
+  String xp = '0';
+
   Future<List<IncomingList>> getList() async {
     List<IncomingList> lists = [];
     final dio = Dio();
@@ -58,7 +60,23 @@ class _TopBarState extends State<TopBar> {
     }
   }
 
+  void getxp() async {
+    final dio = Dio();
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final uid = prefs.getString('uid');
+    final response = await dio.get('${dotenv.env["URL"]}/xp/${uid}');
+    setState(() {
+      xp = response.data["xp"].toString();
+    });
+  }
+
   DateTime _selectedDate = DateTime.now(); // Track selected date
+
+  @override
+  void initState() {
+    getxp();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,8 +98,8 @@ class _TopBarState extends State<TopBar> {
                   'assets/medal.png',
                   height: 33,
                 ),
-                const Text(
-                  '23',
+                Text(
+                  xp,
                   style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
                 )
               ],
