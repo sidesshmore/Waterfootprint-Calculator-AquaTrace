@@ -124,23 +124,19 @@ class _LineChartWidgetState extends State<LineChartWidget> {
                 lineBarsData: [
                   LineChartBarData(
                     spots: [
-                      FlSpot(1, weekData[0]),
-                      FlSpot(2, weekData[1]),
-                      FlSpot(3, weekData[2]),
+                      FlSpot(1, weekData[6]),
+                      FlSpot(2, weekData[5]),
+                      FlSpot(3, weekData[4]),
                       FlSpot(4, weekData[3]),
-                      FlSpot(5, weekData[4]),
-                      FlSpot(6, weekData[5]),
-                      FlSpot(7, weekData[6]),
+                      FlSpot(5, weekData[2]),
+                      FlSpot(6, weekData[1]),
+                      FlSpot(7, weekData[0]),
                     ],
                     isCurved: true,
                     gradient: LinearGradient(colors: gradientColors),
                     barWidth: 3,
                     belowBarData: BarAreaData(
-                      gradient: LinearGradient(
-                        colors: gradientColors
-                            .map((color) => color.withOpacity(0.3))
-                            .toList(),
-                      ),
+                      color: Colors.blueGrey,
                     ),
                   ),
                 ],

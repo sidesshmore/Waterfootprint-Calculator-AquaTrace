@@ -28,7 +28,7 @@ class _ChartsPageState extends State<ChartsPage> {
             height: height * 0.1,
           ),
           Text(
-            'Aqua Info',
+            '7 day Waterfootprint',
             style: TextStyle(
                 fontSize: height * 0.045, fontWeight: FontWeight.bold),
           ),
@@ -37,7 +37,6 @@ class _ChartsPageState extends State<ChartsPage> {
               padding: const EdgeInsets.all(20.0),
               child: SizedBox(
                 height: height * 0.50,
-                // width: width,
                 child: LineChartWidget(),
               ),
             ),
