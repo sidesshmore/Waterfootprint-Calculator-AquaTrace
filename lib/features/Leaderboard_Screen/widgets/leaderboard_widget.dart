@@ -1,4 +1,5 @@
 import 'package:aqua_trace/features/Leaderboard_Screen/models/user_lead_list.dart';
+import 'package:aqua_trace/features/Leaderboard_Screen/repos/leaderBoardItems.dart';
 import 'package:aqua_trace/features/Leaderboard_Screen/widgets/user_row.dart';
 import 'package:flutter/material.dart';
 
@@ -10,9 +11,24 @@ class LeaderBoards extends StatefulWidget {
 }
 
 class _LeaderBoardsState extends State<LeaderBoards> {
+
+   List<UserLeadList> userList=[];
+
+  void getLeaderBoard()async{
+    List<UserLeadList> Lists=await LeaderBoardItems.getList();
+    setState(() {
+      userList=Lists;
+    });
+  }
+
+  @override
+  void initState() {
+    getLeaderBoard();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    userList;
     double height = MediaQuery.sizeOf(context).height;
     double width = MediaQuery.sizeOf(context).width;
     return Container(
@@ -28,9 +44,9 @@ class _LeaderBoardsState extends State<LeaderBoards> {
         child: ListView.separated(
             itemBuilder: (context, index) {
               return UserLeadRow(
-                userRank: userList[index].userRank,
-                userName: userList[index].userName,
-                userXP: userList[index].userXP,
+                userRank: (index+1).toString(),
+                userName: userList[index].uid,
+                userXP: userList[index].totalxp,
               );
             },
             separatorBuilder: (context, index) {

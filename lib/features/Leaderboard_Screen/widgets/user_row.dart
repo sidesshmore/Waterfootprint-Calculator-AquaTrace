@@ -33,7 +33,7 @@ class _UserLeadRowState extends State<UserLeadRow> {
 
   @override
   Widget build(BuildContext context) {
-    userList;
+  
     double height = MediaQuery.sizeOf(context).height;
     double width = MediaQuery.sizeOf(context).width;
     return Row(
@@ -69,7 +69,7 @@ class _UserLeadRowState extends State<UserLeadRow> {
               Text(
                 widget.userName,
                 style:
-                    const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
             ],
           ),
