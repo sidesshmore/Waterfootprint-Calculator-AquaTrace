@@ -25,7 +25,8 @@
 
 ## Walkthrough
 
-![1](Video Clip)
+
+https://github.com/sidesshmore/AquaTrace/assets/109675078/28b4dd91-b08f-4778-a788-84144393ac78
 
 ![2](https://res.cloudinary.com/dgyvdwda7/image/upload/v1714320966/nvdepq8f8wcl39nzjdtt.jpg)
 
