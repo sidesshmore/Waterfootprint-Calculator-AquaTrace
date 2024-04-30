@@ -1,0 +1,47 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextIndex", "fullTextSearch"]
+  binaryTargets   = ["native", "rhel-openssl-1.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model activity {
+  id             Int      @id @default(autoincrement())
+  activity       String?
+  waterfootprint Decimal? @db.Decimal
+}
+
+model food {
+  id             Int      @id @default(autoincrement())
+  fooditems      String?
+  waterfootprint Decimal? @db.Decimal
+}
+
+model userdata {
+  id             Int      @id @default(autoincrement())
+  uid            String
+  item           String
+  waterfootprint Decimal
+  quantity       Decimal
+  measure       String
+  date           DateTime @default(now()) @db.Date
+}
+
+model xp{
+  id             Int      @id @default(autoincrement())
+  uid            String
+  totalxp        Decimal
+  date           DateTime @db.Date
+}
+
+model newxp{
+    id             Int      @id @default(autoincrement())
+    uid            String
+    name           String
+  totalxp        Decimal
+  date           DateTime @db.Date
+}
