@@ -1,9 +1,5 @@
 <h1 align="center">  📲AquaTrace  🌊 </h1> <br>
 <p align="center">
-<h1 align="center"> <a href="https://play.google.com/store/search?q=Aqua%20Trace&c=apps"> App Link (Play Store)   </h1></a><br>
-</p>
-
-<p align="center">
  <a href="https://pbs.twimg.com/media/GLwgHwIXMAAUBrS?format=jpg&name=small">
     <img src="https://pbs.twimg.com/media/GLwgHwIXMAAUBrS?format=jpg&name=medium" alt="HiewAF9.md.png" border="0">
   </a>
