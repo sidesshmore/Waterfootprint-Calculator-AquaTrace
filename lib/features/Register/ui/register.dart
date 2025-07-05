@@ -23,16 +23,15 @@ class _RegisterState extends State<Register> {
   bool _passwordVisible = true;
 
   void _handleGoogleLogin() async {
-    final GoogleSignIn _googleSignIn = GoogleSignIn();
     try {
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
       if (googleUser != null) {
         final GoogleSignInAuthentication? googleAuth =
             await googleUser?.authentication;
 
         // Create a new credential
         final credential = GoogleAuthProvider.credential(
-          accessToken: googleAuth?.accessToken,
+          accessToken: googleAuth?.idToken,
           idToken: googleAuth?.idToken,
         );
 

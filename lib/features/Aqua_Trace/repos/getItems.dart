@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:aqua_trace/models/list.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -31,7 +33,8 @@ class getItemsRepo{
   final uid=prefs.getString('uid');
   final response=await dio.get('${dotenv.env["URL"]}/user/today/${uid}');
   if (response.statusCode == 200) {
-  return double.parse(response.data["total"]);
+    log(response.data.toString());
+  return response.data["total"]==null?0:double.parse(response.data["total"]);
   }
   else{
     return 0;

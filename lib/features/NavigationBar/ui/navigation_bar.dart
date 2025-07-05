@@ -7,7 +7,6 @@ import 'package:aqua_trace/features/Leaderboard_Screen/ui/leaderboard_screen.dar
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:showcaseview/showcaseview.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomNavigationBar extends StatefulWidget {
@@ -94,37 +93,19 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
               onDoubleTap: () {
                 _openAddExpenseOverlay();
               },
-              onTap: () {
+                            onTap: () {
                 setState(() {
-                  WidgetsBinding.instance.addPostFrameCallback(
-                    (_) => ShowCaseWidget.of(context).startShowCase([
-                      keyOne,
-                    ]),
-                  );
                   _selectedIndex = 2;
                 });
               },
-              child: CircleAvatar(
+              child: const CircleAvatar(
                 backgroundColor: Color.fromARGB(255, 24, 94, 247),
                 radius: 25,
-                child: Showcase(
-                  tooltipBackgroundColor: Colors.blue,
-                  tooltipBorderRadius: BorderRadius.circular(10),
-                  targetBorderRadius: BorderRadius.circular(30),
-                  targetPadding: EdgeInsets.all(10),
-                  descTextStyle: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      fontSize: 14),
-                  blurValue: 1,
-                  key: keyOne,
-                  description: "Double Tap to track",
-                  child: const Icon(
+                child:  Icon(
                     CupertinoIcons.drop_fill,
                     color: Colors.white,
                     size: 33,
                   ),
-                ),
               ),
             ),
             label: '',

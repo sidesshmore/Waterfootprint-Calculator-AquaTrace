@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:aqua_trace/features/Login/repo/login_repo.dart';
 import 'package:bloc/bloc.dart';
@@ -19,6 +20,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   FutureOr<void> signUpButtonClicked(SignUpButtonClicked event, Emitter<LoginState> emit) async{
     User? user=await LoginRepo.login(event.email, event.password);
+    log(user.toString());
     // Instance of Local Storage 
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     if(user==null){

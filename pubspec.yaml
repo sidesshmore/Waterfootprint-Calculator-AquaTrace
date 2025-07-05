@@ -16,10 +16,10 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 1.0.0+3
+version: 1.1.0+4
 
 environment:
-  sdk: '>=3.2.3 <4.0.0'
+  sdk: ^3.5.3
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -30,8 +30,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  firebase_core:
-  firebase_auth:
+  firebase_core: ^3.15.1
+  firebase_auth: ^5.6.2
   bloc:
   flutter_bloc:
 
@@ -47,21 +47,21 @@ dependencies:
   flutter_swiper_view: ^1.1.8
   confetti: ^0.7.0
   image_picker:
-  tensorflow_lite_flutter:
-  syncfusion_flutter_datepicker: ^25.1.35
+  syncfusion_flutter_datepicker: ^30.1.38
   lottie: ^3.1.0
   simple_icons: ^10.1.3
   url_launcher: ^6.2.5
+  firebase_core_platform_interface: ^6.0.0
 
   flutter_dotenv: ^5.1.0
-  firebase_analytics: ^10.9.0
-  showcaseview: ^2.0.3
+  firebase_analytics:
   onesignal_flutter: ^5.1.3
-  font_awesome_flutter: ^10.7.0
+  font_awesome_flutter: ^10.8.0
   sign_in_button:
   google_sign_in: 
-  fl_chart: ^0.67.0
-  syncfusion_flutter_charts: ^25.1.38
+  fl_chart: 
+  syncfusion_flutter_charts: ^30.1.38
+  tflite_v2: ^1.0.0
 
 
 

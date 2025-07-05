@@ -165,7 +165,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       await SharedPreferences.getInstance();
 
                   prefs.remove('uid');
-                  GoogleSignIn().signOut(); 
+                  await FirebaseAuth.instance.signOut();
                   Navigator.pushNamedAndRemoveUntil(
                       context, 'login', (route) => false);
                 },

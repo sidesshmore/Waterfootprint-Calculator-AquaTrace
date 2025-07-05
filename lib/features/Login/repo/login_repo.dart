@@ -6,8 +6,11 @@ class LoginRepo{
   static Future<User?> login(String email,String password) async {
     final FirebaseAuth auth=FirebaseAuth.instance;
     try {
-      UserCredential credential =await auth.signInWithEmailAndPassword(email: email, password: password);
-      print(credential);
+        final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+    email: email,
+    password: password
+  );
+      log(credential.toString());
       return credential.user;
     } catch (e) {
       log(e.toString());

@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tensorflow_lite_flutter/tensorflow_lite_flutter.dart';
+import 'package:tflite_v2/tflite_v2.dart';
 
 class TryWithAI extends StatefulWidget {
   const TryWithAI({super.key});

@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
@@ -11,6 +12,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
+
 
 class FoodModal extends StatefulWidget {
   const FoodModal({super.key});
@@ -184,6 +187,22 @@ class _FoodModalState extends State<FoodModal> {
                               "quantity": item.quantity,
                               "name":userName
                             });
+                            //  var url = dotenv.env["URL"];
+                            //  var client = http.Client();
+                            // final headers = {'Content-Type': 'application/json'};
+                            // Map<String, dynamic> body = {
+                            //   "uid": prefs.getString('uid'),
+                            //   "item": item.itemName,
+                            //   "measure": category,
+                            //   "quantity": item.quantity,
+                            //   "name":userName
+                            // };
+                            // String jsonBody = jsonEncode(body);
+
+                            //   var response = await client.post(Uri.parse('$url/add'),
+                            //     headers: headers, body: jsonBody);
+                            //   var decodeResponse = jsonDecode(response.body);
+                            //   log(decodeResponse.toString());
 
                             if (response.statusCode == 200) {
                               Navigator.pushNamedAndRemoveUntil(
